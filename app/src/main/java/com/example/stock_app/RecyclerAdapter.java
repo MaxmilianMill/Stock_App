@@ -59,7 +59,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         holder.textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "Clicked on" + cN[position], Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Clicked" + cN[position], Toast.LENGTH_SHORT).show();
             }
         });
     }
