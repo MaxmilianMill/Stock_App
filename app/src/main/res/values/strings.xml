@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Stock_App</string>
+    <string name="sample_price">$231.31</string>
+    <string name="sample_symbol">SPOT</string>
+    <string name="sample_name">Spotify</string>
+    <string name="sample_daily_change">2.32%</string>
+    <string name="stock_overview">Stock Overview</string>
+
+    <string-array name="Company_Name">
+        <item>Spotify</item>
+    </string-array>
+
+    <string-array name="Symbol">
+        <item>SPOT</item>
+    </string-array>
+</resources>
