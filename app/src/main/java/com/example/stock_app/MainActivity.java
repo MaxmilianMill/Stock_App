@@ -53,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            System.out.println("Lets try");
         }
 
         recyclerView = findViewById(R.id.rv_overview);
