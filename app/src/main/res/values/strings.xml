@@ -6,11 +6,46 @@
     <string name="sample_daily_change">2.32%</string>
     <string name="stock_overview">Stock Overview</string>
 
-    <string-array name="Company_Name">
-        <item>Spotify</item>
+    <string-array name="company_name">
+        <item>Apple</item>
+        <item>Microsoft</item>
+        <item>Amazon</item>
+        <item>Facebook</item>
+        <item>Alphabet</item>
+        <item>Tesla</item>
+        <item>Berkshire Hathaway</item>
+        <item>NVIDIA</item>
+        <item>JPMorgan Chase</item>
+        <item>Johnson &amp; Johnson</item>
+        <item>Visa</item>
+        <item>UnitedHealth Group</item>
+        <item>Paypal</item>
+        <item>Home Depot</item>
+        <item>Procter &amp; Gamble</item>
+        <item>Mastercard</item>
+        <item>Walt Disney</item>
+        <item>Bank of America</item>
     </string-array>
 
-    <string-array name="Symbol">
-        <item>SPOT</item>
+    <string-array name="ticker">
+        <item>AAPL</item>
+        <item>MSFT</item>
+        <item>AMZN</item>
+        <item>FB</item>
+        <item>GOOG</item>
+        <item>TSLA</item>
+        <item>BRK.B</item>
+        <item>NVDA</item>
+        <item>JPM</item>
+        <item>JNJ</item>
+        <item>V</item>
+        <item>UNH</item>
+        <item>PYPL</item>
+        <item>HD</item>
+        <item>PG</item>
+        <item>MA</item>
+        <item>DIS</item>
+        <item>BAC</item>
     </string-array>
+
 </resources>
