@@ -5,8 +5,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.view.View;
+import android.widget.Button;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -21,18 +24,6 @@ import java.nio.charset.Charset;
 
 public class MainActivity extends AppCompatActivity {
 
-    RecyclerView recyclerView;
-    RecyclerAdapter adapter;
-    MarketStackAPI api;
-
-    String companyNames[] = getResources().getStringArray(R.array.company_name);
-
-    String companySymbols[] = getResources().getStringArray(R.array.ticker);
-
-    int companyLogos[] = {};
-    String[] price = new String[companySymbols.length];
-    String[] dailyChange = new String[companySymbols.length];
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -40,25 +31,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
 
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
+        Button buttonOverview = (Button) findViewById(R.id.button_overview);
 
-        for (int i = 0; i < companySymbols.length; i++) {
+        buttonOverview.setOnClickListener(new View.OnClickListener() {
 
-            api = new MarketStackAPI();
-            api.apiConnectDaily(companySymbols[i]);
-            try {
-                price[i] = String.valueOf(api.getClose());
-                dailyChange[i] = String.valueOf(api.getDailyChange());
-            } catch (JSONException e) {
-                e.printStackTrace();
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(MainActivity.this, OverviewActivity.class);
+                startActivity(i);
             }
-        }
+        });
 
-        recyclerView = findViewById(R.id.rv_overview);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new RecyclerAdapter(this, companyNames, companyLogos,
-                price, companySymbols, dailyChange);
-        recyclerView.setAdapter(adapter);
     }
 }

@@ -15,6 +15,8 @@ import java.util.ArrayList;
 
 public class MarketStackAPI {
 
+    // JSONObject for the data of the past 30 days
+    private JSONObject chartData;
     // JSONObject for the raw Data
     private JSONObject rawData;
 
@@ -44,7 +46,7 @@ public class MarketStackAPI {
     public void apiConnectDaily(String ticker) {
 
         // dynamic url creation
-        String addressLink = "http://api.marketstack.com/v1/eod?access_key=e83e62fb9537e31ee4398bec2c34162a&symbols=" + ticker + "&limit=1";
+        String addressLink = "http://api.marketstack.com/v1/eod?access_key=e83e62fb9537e31ee4398bec2c34162a&symbols=" + ticker + "&limit=30";
 
         // try catch statement
         try {
@@ -71,6 +73,8 @@ public class MarketStackAPI {
             if (!data.isEmpty()) {
                 // parse data into JSONObject
                 JSONObject jsonObject = new JSONObject(this.data);
+                // paste data of jsonObject into chartData
+                this.chartData = jsonObject;
                 // get json data of the current (last finished day with stock markets open) day
                 this.rawData = jsonObject.getJSONArray("data").getJSONObject(0);
             }
