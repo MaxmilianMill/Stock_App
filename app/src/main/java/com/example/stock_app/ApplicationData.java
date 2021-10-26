@@ -5,14 +5,14 @@ import android.app.Application;
 public class ApplicationData extends Application {
 
     // create Arrays for every important value
-    public String companyNames[] = {"Amazon", "Microsoft"};
-    public String companySymbols[] = {"AMZN", "MSFT"};
-    public String price[] = new String[companySymbols.length];
-    public String dailyChange[] = new String[companySymbols.length];
-    public int companyLogos[] = {R.drawable.amazon, R.drawable.microsoft};
-    public float open[] = new float[companySymbols.length];
-    public float high[] = new float[companySymbols.length];
-    public float low[] = new float[companySymbols.length];
+    public String[] companyNames = {"Amazon", "Microsoft"};
+    public String[] companySymbols = {"AMZN", "MSFT"};
+    public String[] price = new String[companySymbols.length];
+    public String[] dailyChange = new String[companySymbols.length];
+    public int[] companyLogos = {R.drawable.amazon, R.drawable.microsoft};
+    public float[] open = new float[companySymbols.length];
+    public float[] high = new float[companySymbols.length];
+    public float[] low = new float[companySymbols.length];
 
     /*
     Every Array has 3 different methods:

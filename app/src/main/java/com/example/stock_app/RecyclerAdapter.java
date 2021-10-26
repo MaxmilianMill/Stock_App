@@ -15,17 +15,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
     // new String Arrays
-    String companyNames[];
-    String companySymbols[];
-    String price[];
-    String dailyChange[];
+    String[] companyNames;
+    String[] companySymbols;
+    String[] price;
+    String[] dailyChange;
     // new int Array
-    int companyLogos[];
+    int[] companyLogos;
     // new context object
     Context context;
 
     // methods that receives the arrays from the OverviewActivity class and set the newly declared Arrays to the retrieved ones
-    public RecyclerAdapter(Context context, String[] companyNames, int companyLogos[], String[] price,
+    public RecyclerAdapter(Context context, String[] companyNames, int[] companyLogos, String[] price,
                            String[] companySymbols, String[] dailyChange) {
         this.companyNames = companyNames;
         this.companySymbols = companySymbols;
