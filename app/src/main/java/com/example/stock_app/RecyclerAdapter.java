@@ -42,11 +42,11 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull RecyclerAdapter.ViewHolder holder, int position) {
 
-        holder.textView.setText(cN[position]);
+        holder.nameView.setText(cN[position]);
         holder.priceView.setText("$" + p[position]);
         holder.symbolView.setText(cS[position]);
         holder.changeView.setText(dC[position] + "%");
-        holder.imageView.setImageResource(cL[position]);
+        holder.logoView.setImageResource(cL[position]);
 
         if (Float.parseFloat(dC[position]) > 0) {
             holder.changeView.setTextColor(Color.GREEN);
@@ -54,7 +54,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             holder.changeView.setTextColor(Color.RED);
         }
 
-        holder.textView.setOnClickListener(new View.OnClickListener() {
+        holder.nameView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(context, "Clicked" + cN[position], Toast.LENGTH_SHORT).show();
@@ -69,17 +69,17 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView textView;
+        TextView nameView;
         TextView priceView;
         TextView symbolView;
         TextView changeView;
-        ImageView imageView;
+        ImageView logoView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            textView = itemView.findViewById(R.id.company_name);
+            nameView = itemView.findViewById(R.id.company_name);
             symbolView = itemView.findViewById(R.id.company_symbol);
-            imageView = itemView.findViewById(R.id.company_logo);
+            logoView = itemView.findViewById(R.id.company_logo);
             priceView = itemView.findViewById(R.id.price);
             changeView = itemView.findViewById(R.id.daily_change);
         }
