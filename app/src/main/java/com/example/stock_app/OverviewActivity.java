@@ -16,16 +16,6 @@ public class OverviewActivity extends AppCompatActivity {
     RecyclerAdapter adapter;
     // new API object
     MarketStackAPI api;
-    // String Array with all company names
-    String companyNames[] = {"Amazon"}; // getResources().getStringArray(R.array.company_name);
-    // String Array with all company symbols
-    String companySymbols[] = {"AMZN"}; // getResources().getStringArray(R.array.ticker);
-    // new int Array to store all logos
-    int companyLogos[] = {R.drawable.amazon};
-    // new String for the stock price with length of the symbols array
-    String[] price = new String[companySymbols.length];
-    // new String Array for the daily change in price with length of symbols array
-    String[] dailyChange = new String[companySymbols.length];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,18 +29,21 @@ public class OverviewActivity extends AppCompatActivity {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
+        // access the ApplicationData class where all important values are stored
+        ApplicationData appData = ((ApplicationData)getApplicationContext());
+
         // do this for every symbol
-        for (int i = 0; i < companySymbols.length; i++) {
+        for (int i = 0; i < appData.companySymbols.length; i++) {
             // create new object of api
             api = new MarketStackAPI();
             // call the connect method
-            api.apiConnectDaily(companySymbols[i]);
+            api.apiConnectDaily(appData.companySymbols[i]);
             // try the following statements
             try {
                 // retrieve the close price and store it in the price array
-                price[i] = String.valueOf(api.getClose());
+                appData.addPrice(String.valueOf(api.getClose()), i);
                 // retrieve the daily change and store it in the price array
-                dailyChange[i] = String.valueOf(api.getDailyChange());
+                appData.addDailyChange(String.valueOf(api.getDailyChange()), i);
                 // handle json exceptions
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -62,8 +55,8 @@ public class OverviewActivity extends AppCompatActivity {
         // set layout manager for recyclerview
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         // create new adapter for recyclerview and insert the required arrays in it
-        adapter = new RecyclerAdapter(this, companyNames, companyLogos,
-                price, companySymbols, dailyChange);
+        adapter = new RecyclerAdapter(this, appData.companyNames, appData.companyLogos,
+                appData.price, appData.companySymbols, appData.dailyChange);
         // set the adapter
         recyclerView.setAdapter(adapter);
     }
