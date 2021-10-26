@@ -15,22 +15,23 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
     // new String Arrays
-    String cN[];
-    String cS[];
-    String p[];
-    String dC[];
+    String companyNames[];
+    String companySymbols[];
+    String price[];
+    String dailyChange[];
     // new int Array
-    int cL[];
+    int companyLogos[];
     // new context object
     Context context;
 
     // methods that receives the arrays from the OverviewActivity class and set the newly declared Arrays to the retrieved ones
-    public RecyclerAdapter(Context context, String[] cN, int cL[], String[] p, String[] cS, String[] dC) {
-        this.cN = cN;
-        this.cS = cS;
-        this.cL = cL;
-        this.dC = dC;
-        this.p = p;
+    public RecyclerAdapter(Context context, String[] companyNames, int companyLogos[], String[] price,
+                           String[] companySymbols, String[] dailyChange) {
+        this.companyNames = companyNames;
+        this.companySymbols = companySymbols;
+        this.companyLogos = companyLogos;
+        this.dailyChange = dailyChange;
+        this.price = price;
         this.context = context;
     }
 
@@ -49,17 +50,17 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     public void onBindViewHolder(@NonNull RecyclerAdapter.ViewHolder holder, int position) {
 
         // set the views to the according value
-        holder.nameView.setText(cN[position]);
-        holder.priceView.setText("$" + p[position]);
-        holder.symbolView.setText(cS[position]);
-        holder.changeView.setText(dC[position] + "%");
-        holder.logoView.setImageResource(cL[position]);
+        holder.nameView.setText(companyNames[position]);
+        holder.priceView.setText("$" + price[position]);
+        holder.symbolView.setText(companySymbols[position]);
+        holder.changeView.setText(dailyChange[position] + "%");
+        holder.logoView.setImageResource(companyLogos[position]);
 
         // conditionally change the daily change text color depending on positive or negative change
-        if (Float.parseFloat(dC[position]) > 0) {
+        if (Float.parseFloat(dailyChange[position]) > 0) {
             // change to green
             holder.changeView.setTextColor(Color.GREEN);
-        } else if (Float.parseFloat(dC[position]) < 0) {
+        } else if (Float.parseFloat(dailyChange[position]) < 0) {
             // change to red
             holder.changeView.setTextColor(Color.RED);
         }
@@ -69,14 +70,14 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             @Override
             public void onClick(View v) {
                 // output a small message on app
-                Toast.makeText(context, "Clicked" + cN[position], Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Clicked" + companyNames[position], Toast.LENGTH_SHORT).show();
 
                 // new intent with reference to DetailActivity class
                 Intent intent = new Intent(context, DetailActivity.class);
                 // give the intent the company logo
-                intent.putExtra("company_logo", cL[position]);
+                intent.putExtra("company_logo", companyLogos[position]);
                 // give the intent the commpany name
-                intent.putExtra("company_name", cN[position]);
+                intent.putExtra("company_name", companyNames[position]);
                 // start
                 context.startActivity(intent);
             }
@@ -86,7 +87,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     // counts the amount of items to create
     @Override
     public int getItemCount() {
-        return cN.length;
+        return companyNames.length;
     }
 
     // class for the different elements
