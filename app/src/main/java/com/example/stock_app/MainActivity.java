@@ -23,7 +23,7 @@ import java.net.URL;
 import java.nio.charset.Charset;
 
 public class MainActivity extends AppCompatActivity {
-
+    // methods gets called
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent i = new Intent(MainActivity.this, OverviewActivity.class);
                 startActivity(i);
                 System.out.println("Hello");
+                System.out.println("Worl");
             }
         });
 
