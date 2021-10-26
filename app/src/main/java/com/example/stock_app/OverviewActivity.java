@@ -36,14 +36,15 @@ public class OverviewActivity extends AppCompatActivity {
         for (int i = 0; i < appData.companySymbols.length; i++) {
             // create new object of api
             api = new MarketStackAPI();
-            // call the connect method
+            // call the connect method for every symbol in the array
             api.apiConnectDaily(appData.companySymbols[i]);
             // try the following statements
             try {
-                // retrieve the close price and store it in the price array
+                // add close price from api to the price array
                 appData.addPrice(String.valueOf(api.getClose()), i);
-                // retrieve the daily change and store it in the price array
+                // add dailyChange from api to the dailyChange array
                 appData.addDailyChange(String.valueOf(api.getDailyChange()), i);
+
                 // handle json exceptions
             } catch (JSONException e) {
                 e.printStackTrace();

@@ -13,6 +13,8 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         // set the content view to activity_detail
         setContentView(R.layout.activity_detail);
+        // hide upper app bar
+        getSupportActionBar().hide();
         // call intent function
         getIncomingIntent();
     }

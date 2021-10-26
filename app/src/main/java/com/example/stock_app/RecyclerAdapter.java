@@ -99,7 +99,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         TextView changeView;
         ImageView logoView;
 
-        // method to assign views the matching xml element
+        // method to assign views the matching xml elements
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             nameView = itemView.findViewById(R.id.company_name);
