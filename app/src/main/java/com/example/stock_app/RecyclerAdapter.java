@@ -1,6 +1,7 @@
 package com.example.stock_app;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -58,6 +59,11 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             @Override
             public void onClick(View v) {
                 Toast.makeText(context, "Clicked" + cN[position], Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(context, DetailActivity.class);
+                intent.putExtra("company_logo", cL[position]);
+                intent.putExtra("company_name", cN[position]);
+                context.startActivity(intent);
             }
         });
     }

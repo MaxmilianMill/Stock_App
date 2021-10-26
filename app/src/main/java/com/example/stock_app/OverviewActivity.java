@@ -15,11 +15,11 @@ public class OverviewActivity extends AppCompatActivity {
     RecyclerAdapter adapter;
     MarketStackAPI api;
 
-    String companyNames[] = {"Amazon", "Apple", "Alphabet", "Microsoft"}; // getResources().getStringArray(R.array.company_name);
+    String companyNames[] = {"Amazon"}; // getResources().getStringArray(R.array.company_name);
 
-    String companySymbols[] = {"AMZN", "AAPL", "GOOG", "MSFT"}; // getResources().getStringArray(R.array.ticker);
+    String companySymbols[] = {"AMZN"}; // getResources().getStringArray(R.array.ticker);
 
-    int companyLogos[] = {R.drawable.amazon, R.drawable.apple, R.drawable.alphabet, R.drawable.microsoft};
+    int companyLogos[] = {R.drawable.amazon};
     String[] price = new String[companySymbols.length];
     String[] dailyChange = new String[companySymbols.length];
 

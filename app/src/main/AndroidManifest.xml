@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Stock_App">
         <activity
+            android:name=".DetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".OverviewActivity"
             android:exported="false" />
         <activity

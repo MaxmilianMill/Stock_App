@@ -5,6 +5,7 @@
     <string name="sample_name">Spotify</string>
     <string name="sample_daily_change">2.32%</string>
     <string name="stock_overview">Stock Overview</string>
+    <string name="amazon">Amazon</string>
 
     <string-array name="company_name">
         <item>Apple</item>
