@@ -1,5 +1,11 @@
 <resources>
     <string name="app_name">Stock_App</string>
+    //MainActivity-Buttons
+    <string name="textheader">Main Menu</string>
+    <string name="buttonoverview">Overview</string>
+    <string name="buttondetailpage">Detailpage</string>
+    <string name="buttonwatchlist">Watchlist</string>
+
     <string name="sample_price">$231.31</string>
     <string name="sample_symbol">SPOT</string>
     <string name="sample_name">Spotify</string>
