@@ -23,25 +23,27 @@ import java.net.URL;
 import java.nio.charset.Charset;
 
 public class MainActivity extends AppCompatActivity {
-    // methods gets called
+    // methods gets called when app is started
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        // set the layout to the activity main xml file
         setContentView(R.layout.activity_main);
+        // hide the upper app bar
         getSupportActionBar().hide();
 
+        // new button that is connected to the xml button with following id
         Button buttonOverview = (Button) findViewById(R.id.button_overview);
-
+        // set an on click listener to button
         buttonOverview.setOnClickListener(new View.OnClickListener() {
-
+            // when button is clicked
             @Override
             public void onClick(View v) {
-
+                // when button is clicked --> call OverviewActivity class
                 Intent i = new Intent(MainActivity.this, OverviewActivity.class);
+                // start
                 startActivity(i);
-                System.out.println("Hello");
-                System.out.println("Worl");
             }
         });
 
