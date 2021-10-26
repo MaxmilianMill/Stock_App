@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DetailActivity"
-    android:background="@drawable/overview_gradient_background">
+    android:background="@drawable/gradient_background">
 
     <ImageView
         android:id="@+id/iv_detail_logo"
