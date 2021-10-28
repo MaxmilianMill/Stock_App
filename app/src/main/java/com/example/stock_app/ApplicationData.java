@@ -2,6 +2,8 @@ package com.example.stock_app;
 
 import android.app.Application;
 
+import java.util.ArrayList;
+
 public class ApplicationData extends Application {
 
     // create Arrays for every important value
@@ -13,6 +15,7 @@ public class ApplicationData extends Application {
     public String[] open = new String[companySymbols.length];
     public String[] high = new String[companySymbols.length];
     public String[] low = new String[companySymbols.length];
+    public ArrayList chartData = new ArrayList<>();
 
     /*
     Every Array has 3 different methods:
@@ -123,5 +126,17 @@ public class ApplicationData extends Application {
     public void addLow(String low, int index) {
 
         this.low[index] = low;
+    }
+
+    public ArrayList getChartData() {
+        return chartData;
+    }
+
+    public void setChartData(ArrayList chartData) {
+        this.chartData = chartData;
+    }
+
+    public void addChartData(ArrayList chartData) {
+        this.chartData.add(chartData);
     }
 }

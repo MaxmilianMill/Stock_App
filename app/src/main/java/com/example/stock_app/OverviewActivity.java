@@ -46,12 +46,15 @@ public class OverviewActivity extends AppCompatActivity {
                 appData.addHigh(String.valueOf(api.getHigh()), i);
                 appData.addLow(String.valueOf(api.getLow()), i);
                 appData.addDailyChange(String.valueOf(api.getDailyChange()), i);
+                appData.addChartData(api.getChartData());
 
                 // handle json exceptions
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
+
+        System.out.println(appData.chartData);
 
         // find the recyclerview by the id in the xml file
         recyclerView = findViewById(R.id.rv_overview);

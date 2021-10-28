@@ -1,5 +1,6 @@
 package com.example.stock_app;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -16,7 +17,7 @@ import java.util.ArrayList;
 public class MarketStackAPI {
 
     // JSONObject for the data of the past 30 days
-    private JSONObject chartData;
+    private JSONArray chartData;
     // JSONObject for the raw Data
     private JSONObject rawData;
 
@@ -25,18 +26,8 @@ public class MarketStackAPI {
 
     // open price
     private float open;
-    // high price
-    private float high;
-    // low price
-    private float low;
     // close price
     private float close;
-    // volume
-    private int volume;
-    // symbol
-    private String symbol;
-    // daily price change in percent
-    private float dailyChange;
 
     // main method
     public static void main(String[] args) throws JSONException {
@@ -74,7 +65,7 @@ public class MarketStackAPI {
                 // parse data into JSONObject
                 JSONObject jsonObject = new JSONObject(this.data);
                 // paste data of jsonObject into chartData
-                this.chartData = jsonObject;
+                this.chartData = jsonObject.getJSONArray("data");
                 // get json data of the current (last finished day with stock markets open) day
                 this.rawData = jsonObject.getJSONArray("data").getJSONObject(0);
             }
@@ -91,14 +82,14 @@ public class MarketStackAPI {
 
     public Float getHigh() throws JSONException {
         // get open price from raw data object
-        this.high = (float) this.rawData.getDouble("high");
-        return this.high;
+        float high = (float) this.rawData.getDouble("high");
+        return high;
     }
 
     public Float getLow() throws JSONException {
         // get open price from raw data object
-        this.low = (float) this.rawData.getDouble("low");
-        return this.low;
+        float low = (float) this.rawData.getDouble("low");
+        return low;
     }
 
     public Float getClose() throws JSONException {
@@ -111,14 +102,14 @@ public class MarketStackAPI {
     public Integer getVolume() throws JSONException {
         // get open price from raw data object
 
-        this.volume = this.rawData.getInt("volume");
-        return this.volume;
+        int volume = this.rawData.getInt("volume");
+        return volume;
     }
 
     public String getSymbol() throws JSONException {
         // get open price from raw data object
-        this.symbol = this.rawData.getString("symbol");
-        return this.symbol;
+        String symbol = this.rawData.getString("symbol");
+        return symbol;
     }
 
     public BigDecimal getDailyChange() throws JSONException {
@@ -128,9 +119,23 @@ public class MarketStackAPI {
             this.getOpen();
         }
         // calculate price change from open to close
-        this.dailyChange = (this.close / this.open - 1) * 100;
+        float dailyChange = (this.close / this.open - 1) * 100;
         // round to two decimals
-        BigDecimal bd = new BigDecimal(this.dailyChange).setScale(2, RoundingMode.HALF_UP);
+        BigDecimal bd = new BigDecimal(dailyChange).setScale(2, RoundingMode.HALF_UP);
         return bd;
+    }
+
+    public ArrayList<Object> getChartData() throws JSONException {
+        // create array list
+        ArrayList<Object> chartDataList = new ArrayList<>();
+        // loop through json object chartData and paste every close price in array list
+        for (int i = 0; i < this.chartData.length(); i++) {
+
+            double chartData = this.chartData.getJSONObject(i).getDouble("close");
+
+            chartDataList.add(i, chartData);
+        }
+
+        return chartDataList;
     }
 }
