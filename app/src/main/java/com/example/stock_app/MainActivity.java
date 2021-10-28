@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         // hide the upper app bar
         getSupportActionBar().hide();
 
+    // Funktion ButtonOverview
         // new button that is connected to the xml button with following id
         Button buttonOverview = (Button) findViewById(R.id.button_overview);
         // set an on click listener to button
@@ -42,6 +43,21 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // when button is clicked --> call OverviewActivity class
                 Intent i = new Intent(MainActivity.this, OverviewActivity.class);
+                // start
+                startActivity(i);
+            }
+        });
+
+    // Funktion ButtonSearchStock
+        // new button that is connected to the xml button with following id
+        Button buttonSearchStock = (Button) findViewById(R.id.button_detailpage);
+        // set an on click listener to button
+        buttonSearchStock.setOnClickListener(new View.OnClickListener() {
+            // when button is clicked
+            @Override
+            public void onClick(View v) {
+                // when button is clicked --> call SearchStockActivity class
+                Intent i = new Intent(MainActivity.this, SearchStockActivity.class);
                 // start
                 startActivity(i);
             }

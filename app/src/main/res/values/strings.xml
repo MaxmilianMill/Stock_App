@@ -5,6 +5,8 @@
     <string name="buttonoverview">Overview</string>
     <string name="buttondetailpage">Detailpage</string>
     <string name="buttonwatchlist">Watchlist</string>
+    //SearchableStock
+    <string name="SearchableListView">Search for your Stock or click it below!</string>
 
     <string name="sample_price">$231.31</string>
     <string name="sample_symbol">SPOT</string>
