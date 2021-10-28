@@ -40,9 +40,11 @@ public class OverviewActivity extends AppCompatActivity {
             api.apiConnectDaily(appData.companySymbols[i]);
             // try the following statements
             try {
-                // add close price from api to the price array
+                // add all data points into the arrays
                 appData.addPrice(String.valueOf(api.getClose()), i);
-                // add dailyChange from api to the dailyChange array
+                appData.addOpen(String.valueOf(api.getOpen()), i);
+                appData.addHigh(String.valueOf(api.getHigh()), i);
+                appData.addLow(String.valueOf(api.getLow()), i);
                 appData.addDailyChange(String.valueOf(api.getDailyChange()), i);
 
                 // handle json exceptions

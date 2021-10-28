@@ -10,9 +10,9 @@ public class ApplicationData extends Application {
     public String[] price = new String[companySymbols.length];
     public String[] dailyChange = new String[companySymbols.length];
     public int[] companyLogos = {R.drawable.amazon, R.drawable.microsoft};
-    public float[] open = new float[companySymbols.length];
-    public float[] high = new float[companySymbols.length];
-    public float[] low = new float[companySymbols.length];
+    public String[] open = new String[companySymbols.length];
+    public String[] high = new String[companySymbols.length];
+    public String[] low = new String[companySymbols.length];
 
     /*
     Every Array has 3 different methods:
@@ -86,44 +86,42 @@ public class ApplicationData extends Application {
         this.companyLogos[index] = companyLogos;
     }
 
-    public float[] getOpen() {
+    public String[] getOpen() {
         return open;
     }
 
-    public void setOpen(float[] open) {
+    public void setOpen(String[] open) {
         this.open = open;
     }
 
-    public void addOpen(float open, int index) {
+    public void addOpen(String open, int index) {
 
         this.open[index] = open;
     }
 
-    public float[] getHigh() {
+    public String[] getHigh() {
         return high;
     }
 
-    public void setHigh(float[] high) {
+    public void setHigh(String[] high) {
         this.high = high;
     }
 
-    public void addHigh(float high, int index) {
+    public void addHigh(String high, int index) {
 
         this.high[index] = high;
     }
 
-    public float[] getLow() {
+    public String[] getLow() {
         return low;
     }
 
-    public void setLow(float[] low) {
+    public void setLow(String[] low) {
         this.low = low;
     }
 
-    public void addLow(float low, int index) {
+    public void addLow(String low, int index) {
 
         this.low[index] = low;
     }
-
-
 }
