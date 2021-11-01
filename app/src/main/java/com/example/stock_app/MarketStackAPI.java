@@ -37,7 +37,7 @@ public class MarketStackAPI {
     public void apiConnectDaily(String ticker) {
 
         // dynamic url creation
-        String addressLink = "http://api.marketstack.com/v1/eod?access_key=e83e62fb9537e31ee4398bec2c34162a&symbols=" + ticker + "&limit=30";
+        String addressLink = "http://api.marketstack.com/v1/eod?access_key=9af6b1eb9e98623a9685fee2bb8376ed&symbols=" + ticker + "&limit=30";
 
         // try catch statement
         try {

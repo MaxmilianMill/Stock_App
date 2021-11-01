@@ -37,7 +37,7 @@ public class DetailActivity extends AppCompatActivity {
     // function to assign elements the values
     private void setDetails(int companyLogo, String companyName) {
         // find view and set the text to the company name
-        TextView nameView = findViewById(R.id.iv_detail_name);
+        TextView nameView = findViewById(R.id.tv_detail_name);
         nameView.setText(companyName);
 
         // Find image view and set it to the company logo

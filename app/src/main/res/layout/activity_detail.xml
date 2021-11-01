@@ -20,7 +20,7 @@
         app:srcCompat="@drawable/apple" />
 
     <TextView
-        android:id="@+id/iv_detail_name"
+        android:id="@+id/tv_detail_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/dummy"
