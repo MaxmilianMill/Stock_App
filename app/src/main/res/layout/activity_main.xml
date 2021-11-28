@@ -18,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="80dp"
             android:text="@string/textheader"
             android:textColor="@color/white"
             android:textSize="25sp"
@@ -31,9 +31,10 @@
             android:id="@+id/button_overview"
             android:layout_width="wrap_content"
             android:layout_height="77dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="108dp"
             android:minWidth="200dp"
             android:text="@string/buttonoverview"
+            android:background="@drawable/button_background"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textHeader" />
@@ -45,6 +46,7 @@
             android:layout_marginTop="30dp"
             android:minWidth="200dp"
             android:text="@string/buttondetailpage"
+            android:background="@drawable/button_background"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/button_overview" />
@@ -56,8 +58,22 @@
             android:layout_marginTop="30dp"
             android:minWidth="200dp"
             android:text="@string/buttonwatchlist"
+            android:background="@drawable/button_background"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/button_detailpage" />
+
+        <Button
+            android:id="@+id/button_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            app:layout_constraintBottom_toTopOf="@+id/textHeader"
+            android:background="@drawable/button_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

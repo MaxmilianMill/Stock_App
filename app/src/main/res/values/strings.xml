@@ -15,6 +15,12 @@
     <string name="stock_overview">Stock Overview</string>
     <string name="amazon">Amazon</string>
     <string name="dummy">Dummy</string>
+    <string name="Login_text">Willkommen in Ihrer StockApp!</string>
+    <string name="editTextEmail">Email-Adresse</string>
+    <string name="editTextPasswort">Passwort</string>
+    <string name="editTextPasswortBestatigen">Passwort bestätigen</string>
+    <string name="btnTextSignUp">Sign up!</string>
+    <string name="btnTextLogin">Login!</string>
 
     <string-array name="company_name">
         <item>Apple</item>
