@@ -3,25 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Studium/MobileAppEntwicklung/AndroidStudioProjects/Stock_App/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3828125" />
-        <entry key="..\:/Studium/MobileAppEntwicklung/AndroidStudioProjects/Stock_App/app/src/main/res/drawable/button_background.xml" value="0.1787037037037037" />
-        <entry key="..\:/Studium/MobileAppEntwicklung/AndroidStudioProjects/Stock_App/app/src/main/res/drawable/edittext_background.xml" value="0.1787037037037037" />
-        <entry key="..\:/Studium/MobileAppEntwicklung/AndroidStudioProjects/Stock_App/app/src/main/res/drawable/gradient_background.xml" value="0.3828125" />
-        <entry key="..\:/Studium/MobileAppEntwicklung/AndroidStudioProjects/Stock_App/app/src/main/res/drawable/ic_launcher_background.xml" value="0.3828125" />
-        <entry key="..\:/Studium/MobileAppEntwicklung/AndroidStudioProjects/Stock_App/app/src/main/res/layout/activity_login.xml" value="0.1638888888888889" />
-        <entry key="..\:/Studium/MobileAppEntwicklung/AndroidStudioProjects/Stock_App/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Studium/MobileAppEntwicklung/AndroidStudioProjects/Stock_App/app/src/main/res/layout/activity_search_stock.xml" value="0.1762917933130699" />
-        <entry key="..\:/Studium/MobileAppEntwicklung/AndroidStudioProjects/Stock_App/app/src/main/res/layout/login_tab_fragment.xml" value="0.1638888888888889" />
-        <entry key="..\:/Studium/MobileAppEntwicklung/AndroidStudioProjects/Stock_App/app/src/main/res/layout/overview_activity.xml" value="0.17831813576494426" />
-        <entry key="..\:/Studium/MobileAppEntwicklung/AndroidStudioProjects/Stock_App/app/src/main/res/layout/sign_up_tab_fragment.xml" value="0.1638888888888889" />
         <entry key="..\:/Users/mmmue/AndroidStudioProjects/Stock_App/app/src/main/res/drawable/overview_gradient_background.xml" value="0.3828125" />
         <entry key="..\:/Users/mmmue/AndroidStudioProjects/Stock_App/app/src/main/res/layout/activity_detail.xml" value="0.35260416666666666" />
+        <entry key="..\:/Users/mmmue/AndroidStudioProjects/Stock_App/app/src/main/res/layout/activity_login.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/mmmue/AndroidStudioProjects/Stock_App/app/src/main/res/layout/activity_main.xml" value="0.2957427536231884" />
         <entry key="..\:/Users/mmmue/AndroidStudioProjects/Stock_App/app/src/main/res/layout/activity_overview.xml" value="0.25407608695652173" />
         <entry key="..\:/Users/mmmue/AndroidStudioProjects/Stock_App/app/src/main/res/layout/detail.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/mmmue/AndroidStudioProjects/Stock_App/app/src/main/res/layout/detail_activity.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/mmmue/AndroidStudioProjects/Stock_App/app/src/main/res/layout/overview.xml" value="0.4" />
         <entry key="..\:/Users/mmmue/AndroidStudioProjects/Stock_App/app/src/main/res/layout/overview_activity.xml" value="0.25407608695652173" />
+        <entry key="..\:/Users/mmmue/AndroidStudioProjects/Stock_App/app/src/main/res/layout/overview_item.xml" value="0.12360688956433637" />
+        <entry key="..\:/Users/mmmue/AndroidStudioProjects/Stock_App/app/src/main/res/layout/sign_up_tab_fragment.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/mmmue/AndroidStudioProjects/Stock_App/app/src/main/res/layout/stock_overview_row.xml" value="0.2337962962962963" />
         <entry key="..\:/Users/treff/AndroidStudioProjects/Stock_App/app/src/main/res/layout/activity_detail.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/treff/AndroidStudioProjects/Stock_App/app/src/main/res/layout/activity_main.xml" value="0.29393115942028986" />

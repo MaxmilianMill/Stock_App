@@ -6,6 +6,10 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
+
 public class DetailActivity extends AppCompatActivity {
 
     @Override
@@ -17,6 +21,8 @@ public class DetailActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         // call intent function
         getIncomingIntent();
+
+        getGraph();
     }
 
     // intent function
@@ -43,5 +49,18 @@ public class DetailActivity extends AppCompatActivity {
         // Find image view and set it to the company logo
         ImageView logoView = findViewById(R.id.iv_detail_logo);
         logoView.setImageResource(Integer.parseInt(String.valueOf(companyLogo)));
+    }
+
+    private void getGraph() {
+
+        GraphView graphView = (GraphView) findViewById(R.id.gv_price_chart);
+        LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>(new DataPoint[] {
+                new DataPoint(1, 2),
+                new DataPoint(2, 4),
+                new DataPoint(3, 6),
+                new DataPoint(4, 8)
+        });
+
+        graphView.addSeries(series);
     }
 }
