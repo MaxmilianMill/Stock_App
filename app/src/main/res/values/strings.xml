@@ -21,6 +21,10 @@
     <string name="editTextPasswortBestatigen">Passwort bestätigen</string>
     <string name="btnTextSignUp">Sign up!</string>
     <string name="btnTextLogin">Login!</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="high">High</string>
+    <string name="low">Low</string>
 
     <string-array name="company_name">
         <item>Apple</item>

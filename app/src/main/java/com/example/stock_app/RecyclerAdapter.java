@@ -13,12 +13,17 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
     // new String Arrays
     String[] companyNames;
     String[] companySymbols;
     String[] price;
     String[] dailyChange;
+    String[] open;
+    String[] high;
+    String[] low;
     // new int Array
     int[] companyLogos;
     // new context object
@@ -26,12 +31,17 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     // methods that receives the arrays from the OverviewActivity class and set the newly declared Arrays to the retrieved ones
     public RecyclerAdapter(Context context, String[] companyNames, int[] companyLogos, String[] price,
-                           String[] companySymbols, String[] dailyChange) {
+                           String[] companySymbols, String[] dailyChange, String[] open, String[] high,
+                           String[] low) {
+
         this.companyNames = companyNames;
         this.companySymbols = companySymbols;
         this.companyLogos = companyLogos;
         this.dailyChange = dailyChange;
         this.price = price;
+        this.open = open;
+        this.high = high;
+        this.low = low;
         this.context = context;
     }
 
@@ -78,6 +88,11 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
                 intent.putExtra("company_logo", companyLogos[position]);
                 // give the intent the commpany name
                 intent.putExtra("company_name", companyNames[position]);
+                // put all price data in extra
+                intent.putExtra("close", price[position]);
+                intent.putExtra("open", open[position]);
+                intent.putExtra("high", high[position]);
+                intent.putExtra("low", low[position]);
                 // start
                 context.startActivity(intent);
             }

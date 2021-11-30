@@ -34,14 +34,19 @@ public class DetailActivity extends AppCompatActivity {
             int companyLogo = getIntent().getIntExtra("company_logo", 0);
             // assign the string the company name
             String companyName = getIntent().getStringExtra("company_name");
+            String close = getIntent().getStringExtra("close");
+            String open = getIntent().getStringExtra("open");
+            String high = getIntent().getStringExtra("high");
+            String low = getIntent().getStringExtra("low");
 
             // call function to assign elements the defined values
-            setDetails(companyLogo, companyName);
+            setDetails(companyLogo, companyName, close, open, high, low);
         }
     }
 
     // function to assign elements the values
-    private void setDetails(int companyLogo, String companyName) {
+    private void setDetails(int companyLogo, String companyName, String close, String open,
+                            String high, String low) {
         // find view and set the text to the company name
         TextView nameView = findViewById(R.id.tv_detail_name);
         nameView.setText(companyName);
@@ -49,6 +54,18 @@ public class DetailActivity extends AppCompatActivity {
         // Find image view and set it to the company logo
         ImageView logoView = findViewById(R.id.iv_detail_logo);
         logoView.setImageResource(Integer.parseInt(String.valueOf(companyLogo)));
+
+        TextView closeView = findViewById(R.id.tv_close);
+        closeView.setText("$" + close);
+
+        TextView openView = findViewById(R.id.tv_open);
+        openView.setText("$" + open);
+
+        TextView highView = findViewById(R.id.tv_high);
+        highView.setText("$" + high);
+
+        TextView lowView = findViewById(R.id.tv_low);
+        lowView.setText("$" + low);
     }
 
     private void getGraph() {

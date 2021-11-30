@@ -60,7 +60,8 @@ public class OverviewActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         // create new adapter for recyclerview and insert the required arrays in it
         adapter = new RecyclerAdapter(this, appData.companyNames, appData.companyLogos,
-                appData.price, appData.companySymbols, appData.dailyChange);
+                appData.price, appData.companySymbols, appData.dailyChange, appData.open, appData.high,
+                appData.low);
         // set the adapter
         recyclerView.setAdapter(adapter);
     }

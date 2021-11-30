@@ -7,34 +7,90 @@
     tools:context=".DetailActivity"
     android:background="@drawable/gradient_background">
 
-    <ImageView
-        android:id="@+id/iv_detail_logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.242"
-        app:srcCompat="@drawable/apple" />
-
     <TextView
         android:id="@+id/tv_detail_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="152dp"
         android:text="@string/dummy"
+        android:textColor="@color/white"
         android:textSize="30dp"
         android:textStyle="bold"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/iv_detail_logo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_detail_logo"
+        android:layout_width="43dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="84dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.037"
+        app:srcCompat="@drawable/apple" />
 
     <com.jjoe64.graphview.GraphView
         android:id="@+id/gv_price_chart"
+        android:layout_width="416dp"
+        android:layout_height="201dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.513"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.177" />
+
+    <TextView
+        android:id="@+id/tv_open"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        />
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/open"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:gravity="right"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gv_price_chart" />
+
+    <TextView
+        android:id="@+id/tv_close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="144dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/close"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:gravity="left"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gv_price_chart" />
+
+    <TextView
+        android:id="@+id/tv_high"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="144dp"
+        android:layout_marginTop="72dp"
+        android:text="@string/high"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:gravity="left"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gv_price_chart" />
+
+    <TextView
+        android:id="@+id/tv_low"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="72dp"
+        android:text="@string/low"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:gravity="right"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gv_price_chart" />
 </androidx.constraintlayout.widget.ConstraintLayout>
