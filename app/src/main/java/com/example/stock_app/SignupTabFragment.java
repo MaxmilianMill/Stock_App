@@ -1,6 +1,7 @@
 package com.example.stock_app;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -37,16 +39,31 @@ public class SignupTabFragment extends Fragment {
         password = root.findViewById(R.id.etPassword);
         confirmPassword = root.findViewById(R.id.etConfirmPassword);
 
+        //Button Funktion SignUp
         signUp = root.findViewById(R.id.btnSignUp);
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                createUser(email.getText().toString(), password.getText().toString(), confirmPassword.getText().toString());
+                if (!password.getText().toString().equals(confirmPassword)){
 
+                    password.setBackground(getResources().getDrawable(R.drawable.border_change_false));
+                    confirmPassword.setBackground(getResources().getDrawable(R.drawable.border_change_false));
+                    //Toast.makeText(SignupTabFragment.this, "Passwords are not the same!", Toast.LENGTH_SHORT).show();
+
+                } else {
+                    createUser(email.getText().toString(), password.getText().toString(), confirmPassword.getText().toString());
+
+                    Intent intent = new Intent(getActivity(), MainActivity.class);
+                    startActivity(intent);
+
+                }
             }
         });
         return root;
+
+
+
     }
 
     public void createUser(String email, String password, String confirmPassword) {
