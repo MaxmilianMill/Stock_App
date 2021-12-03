@@ -2,6 +2,7 @@ package com.example.stock_app;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -29,31 +30,45 @@ public class DetailActivity extends AppCompatActivity {
     private void getIncomingIntent() {
 
         // check if the intent has an assigned logo and name
-        if (getIntent().hasExtra("company_logo") && getIntent().hasExtra("company_name")) {
+        if (getIntent().hasExtra("company_logo") && getIntent().hasExtra("price")) {
             // assign the int the company logo element
             int companyLogo = getIntent().getIntExtra("company_logo", 0);
             // assign the string the company name
-            String companyName = getIntent().getStringExtra("company_name");
+            String price = getIntent().getStringExtra("price");
+            String dailyChange = getIntent().getStringExtra("daily_change");
             String close = getIntent().getStringExtra("close");
             String open = getIntent().getStringExtra("open");
             String high = getIntent().getStringExtra("high");
             String low = getIntent().getStringExtra("low");
 
             // call function to assign elements the defined values
-            setDetails(companyLogo, companyName, close, open, high, low);
+            setDetails(companyLogo, price, dailyChange, close, open, high, low);
         }
     }
 
     // function to assign elements the values
-    private void setDetails(int companyLogo, String companyName, String close, String open,
+    private void setDetails(int companyLogo, String price, String dailyChange, String close, String open,
                             String high, String low) {
         // find view and set the text to the company name
-        TextView nameView = findViewById(R.id.tv_detail_name);
-        nameView.setText(companyName);
+        TextView priceView = findViewById(R.id.tv_price);
+        priceView.setText(price);
 
         // Find image view and set it to the company logo
         ImageView logoView = findViewById(R.id.iv_detail_logo);
         logoView.setImageResource(Integer.parseInt(String.valueOf(companyLogo)));
+
+        TextView changeView = findViewById(R.id.tv_change);
+
+        // change color of the daily change
+        if (Float.parseFloat(dailyChange) >= 0) {
+
+            changeView.setTextColor(Color.GREEN);
+        } else {
+
+            changeView.setTextColor(Color.RED);
+        }
+
+        changeView.setText(dailyChange + "%");
 
         TextView closeView = findViewById(R.id.tv_close);
         closeView.setText("$" + close);

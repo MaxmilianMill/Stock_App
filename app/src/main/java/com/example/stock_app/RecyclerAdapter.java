@@ -67,7 +67,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         holder.logoView.setImageResource(companyLogos[position]);
 
         // conditionally change the daily change text color depending on positive or negative change
-        if (Float.parseFloat(dailyChange[position]) > 0) {
+        if (Float.parseFloat(dailyChange[position]) >= 0) {
             // change to green
             holder.changeView.setTextColor(Color.GREEN);
         } else if (Float.parseFloat(dailyChange[position]) < 0) {
@@ -86,13 +86,14 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
                 Intent intent = new Intent(context, DetailActivity.class);
                 // give the intent the company logo
                 intent.putExtra("company_logo", companyLogos[position]);
-                // give the intent the commpany name
-                intent.putExtra("company_name", companyNames[position]);
+                // give the intent the company name
+                intent.putExtra("price", price[position]);
                 // put all price data in extra
                 intent.putExtra("close", price[position]);
                 intent.putExtra("open", open[position]);
                 intent.putExtra("high", high[position]);
                 intent.putExtra("low", low[position]);
+                intent.putExtra("daily_change", dailyChange[position]);
                 // start
                 context.startActivity(intent);
             }
