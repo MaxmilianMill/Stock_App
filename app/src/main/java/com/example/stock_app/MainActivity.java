@@ -63,19 +63,5 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Funktion ButtonLogin
-        // new button that is connected to the xml button with following id
-        Button buttonLogin = (Button) findViewById(R.id.button_login);
-        // set an on click listener to button
-        buttonLogin.setOnClickListener(new View.OnClickListener() {
-            // when button is clicked
-            @Override
-            public void onClick(View v) {
-                // when button is clicked --> call OverviewActivity class
-                Intent i = new Intent(MainActivity.this, LoginActivity.class);
-                // start
-                startActivity(i);
-            }
-        });
     }
 }

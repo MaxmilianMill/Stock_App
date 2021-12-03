@@ -25,6 +25,8 @@
     <string name="close">Close</string>
     <string name="high">High</string>
     <string name="low">Low</string>
+    <string name="editTextFirstName">Firstname</string>
+    <string name="editTextLastname">Lastname</string>
 
     <string-array name="company_name">
         <item>Apple</item>

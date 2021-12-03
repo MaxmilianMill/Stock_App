@@ -3,6 +3,7 @@ package com.example.stock_app;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +25,8 @@ public class SignupTabFragment extends Fragment {
 
     String TAG = "SIGNUP";
 
+    EditText firstname;
+    EditText lastname;
     EditText email;
     EditText password;
     EditText confirmPassword;
@@ -35,6 +38,8 @@ public class SignupTabFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.sign_up_tab_fragment, container, false);
 
+        firstname = root.findViewById(R.id.etFirstName);
+        lastname = root.findViewById(R.id.etLastName);
         email = root.findViewById(R.id.etEmail);
         password = root.findViewById(R.id.etPassword);
         confirmPassword = root.findViewById(R.id.etConfirmPassword);
@@ -45,44 +50,45 @@ public class SignupTabFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                if (!password.getText().toString().equals(confirmPassword)){
+                //create User
+                createUser(firstname.getText().toString(), lastname.getText().toString(), email.getText().toString(), password.getText().toString(), confirmPassword.getText().toString());
 
-                    password.setBackground(getResources().getDrawable(R.drawable.border_change_false));
-                    confirmPassword.setBackground(getResources().getDrawable(R.drawable.border_change_false));
-                    //Toast.makeText(SignupTabFragment.this, "Passwords are not the same!", Toast.LENGTH_SHORT).show();
-
-                } else {
-                    createUser(email.getText().toString(), password.getText().toString(), confirmPassword.getText().toString());
-
-                    Intent intent = new Intent(getActivity(), MainActivity.class);
-                    startActivity(intent);
-
-                }
             }
         });
         return root;
-
-
-
     }
 
-    public void createUser(String email, String password, String confirmPassword) {
+    public void createUser(String firstname, String lastname, String email, String password, String confirmPassword) {
 
         RoomDB db = RoomDB.getDbInstance(this.requireActivity().getApplicationContext());
 
-        if (!password.equals(confirmPassword)) {
+        //Check fields
+        if (firstname.isEmpty() || lastname.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()){
 
-            System.out.println("Passwords are not the same!");
+            Toast.makeText(getActivity(), "Please fill all Fields!", Toast.LENGTH_SHORT).show();
+        }
+        //Check if Password = ConfirmPassword
+        else if (!password.equals(confirmPassword)) {
+
+            Toast.makeText(getActivity(), "Passwords are not the same!", Toast.LENGTH_SHORT).show();
         }
 
-        User user = new User();
-        user.email = email;
-        user.password = password;
-        user.firstName = "Niklas";
-        user.lastName = "Hammer";
+        else {
+            User user = new User();
+            user.email = email;
+            user.password = password;
+            user.firstName = firstname;
+            user.lastName = lastname;
 
-        db.userDao().insertUser(user);
+            db.userDao().insertUser(user);
 
-        Log.d(TAG, "User created!");
+            Toast.makeText(getActivity(), "User created", Toast.LENGTH_SHORT).show();
+
+            Log.d(TAG, "User created!");
+
+            Intent intent = new Intent (getActivity(), MainActivity.class);
+            startActivity(intent);
+        }
+
     }
 }
