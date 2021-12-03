@@ -2,6 +2,8 @@ package com.example.stock_app;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -60,35 +62,51 @@ public class SignupTabFragment extends Fragment {
 
     public void createUser(String firstname, String lastname, String email, String password, String confirmPassword) {
 
-        RoomDB db = RoomDB.getDbInstance(this.requireActivity().getApplicationContext());
+        if (isConnectedToInternet()) {
+            RoomDB db = RoomDB.getDbInstance(this.requireActivity().getApplicationContext());
 
-        //Check fields
-        if (firstname.isEmpty() || lastname.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()){
+            //Check fields
+            if (firstname.isEmpty() || lastname.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
 
-            Toast.makeText(getActivity(), "Please fill all Fields!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Please fill all Fields!", Toast.LENGTH_SHORT).show();
+            }
+            //Check if Password = ConfirmPassword
+            else if (!password.equals(confirmPassword)) {
+
+                Toast.makeText(getActivity(), "Passwords are not the same!", Toast.LENGTH_SHORT).show();
+            } else {
+                User user = new User();
+                user.email = email;
+                user.password = password;
+                user.firstName = firstname;
+                user.lastName = lastname;
+
+                db.userDao().insertUser(user);
+
+                Toast.makeText(getActivity(), "User created", Toast.LENGTH_SHORT).show();
+
+                Log.d(TAG, "User created!");
+
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                startActivity(intent);
+            }
+        } else {
+            startActivityForResult(new Intent(android.provider.Settings.ACTION_SETTINGS), 0);
         }
-        //Check if Password = ConfirmPassword
-        else if (!password.equals(confirmPassword)) {
-
-            Toast.makeText(getActivity(), "Passwords are not the same!", Toast.LENGTH_SHORT).show();
-        }
-
-        else {
-            User user = new User();
-            user.email = email;
-            user.password = password;
-            user.firstName = firstname;
-            user.lastName = lastname;
-
-            db.userDao().insertUser(user);
-
-            Toast.makeText(getActivity(), "User created", Toast.LENGTH_SHORT).show();
-
-            Log.d(TAG, "User created!");
-
-            Intent intent = new Intent (getActivity(), MainActivity.class);
-            startActivity(intent);
-        }
-
     }
+
+    public boolean isConnectedToInternet() {
+        ConnectivityManager connectivity = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (connectivity != null) {
+            NetworkInfo[] info = connectivity.getAllNetworkInfo();
+            if (info != null)
+                for (int i = 0; i < info.length; i++)
+                    if (info[i].getState() == NetworkInfo.State.CONNECTED) {
+                        return true;
+                    }
+
+        }
+        return false;
+    }
+
 }
