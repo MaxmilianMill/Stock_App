@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
@@ -41,10 +43,14 @@ public class MainActivity extends AppCompatActivity {
             // when button is clicked
             @Override
             public void onClick(View v) {
+                if (isConnectedToInternet()){
                 // when button is clicked --> call OverviewActivity class
                 Intent i = new Intent(MainActivity.this, OverviewActivity.class);
                 // start
                 startActivity(i);
+                } else {
+                    startActivityForResult(new Intent(android.provider.Settings.ACTION_SETTINGS), 0);
+                }
             }
         });
 
@@ -56,12 +62,50 @@ public class MainActivity extends AppCompatActivity {
             // when button is clicked
             @Override
             public void onClick(View v) {
-                // when button is clicked --> call SearchStockActivity class
-                Intent i = new Intent(MainActivity.this, SearchStockActivity.class);
-                // start
-                startActivity(i);
+                if (isConnectedToInternet()) {
+                    // when button is clicked --> call SearchStockActivity class
+                    Intent i = new Intent(MainActivity.this, SearchStockActivity.class);
+                    // start
+                    startActivity(i);
+                } else {
+                    startActivityForResult(new Intent(android.provider.Settings.ACTION_SETTINGS), 0);
+                }
+            }
+        });
+
+        // Funktion ButtonWatchlist
+        // new button that is connected to the xml button with following id
+        Button buttonWatchList = (Button) findViewById(R.id.button_watchlist);
+        // set an on click listener to button
+        buttonWatchList.setOnClickListener(new View.OnClickListener() {
+            // when button is clicked
+            @Override
+            public void onClick(View v) {
+                if (isConnectedToInternet()) {
+                    // when button is clicked --> call SearchStockActivity class
+                    Intent i = new Intent(MainActivity.this, WatchlistActivity.class);
+                    // start
+                    startActivity(i);
+                } else {
+                    startActivityForResult(new Intent(android.provider.Settings.ACTION_SETTINGS), 0);
+                }
             }
         });
 
     }
+
+    public boolean isConnectedToInternet() {
+        ConnectivityManager connectivity = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (connectivity != null) {
+            NetworkInfo[] info = connectivity.getAllNetworkInfo();
+            if (info != null)
+                for (int i = 0; i < info.length; i++)
+                    if (info[i].getState() == NetworkInfo.State.CONNECTED) {
+                        return true;
+                    }
+
+        }
+        return false;
+    }
+
 }
