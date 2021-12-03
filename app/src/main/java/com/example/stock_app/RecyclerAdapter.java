@@ -84,6 +84,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
                 // new intent with reference to DetailActivity class
                 Intent intent = new Intent(context, DetailActivity.class);
+                // get the position
+                intent.putExtra("position", position);
                 // give the intent the company logo
                 intent.putExtra("company_logo", companyLogos[position]);
                 // give the intent the company name

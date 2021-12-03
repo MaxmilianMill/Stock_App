@@ -11,7 +11,13 @@ import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class DetailActivity extends AppCompatActivity {
+
+    int recyclerPosition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +29,7 @@ public class DetailActivity extends AppCompatActivity {
         // call intent function
         getIncomingIntent();
 
-        getGraph();
+        getGraph(this.recyclerPosition);
     }
 
     // intent function
@@ -34,12 +40,15 @@ public class DetailActivity extends AppCompatActivity {
             // assign the int the company logo element
             int companyLogo = getIntent().getIntExtra("company_logo", 0);
             // assign the string the company name
+            int position = getIntent().getIntExtra("position", 0);
             String price = getIntent().getStringExtra("price");
             String dailyChange = getIntent().getStringExtra("daily_change");
             String close = getIntent().getStringExtra("close");
             String open = getIntent().getStringExtra("open");
             String high = getIntent().getStringExtra("high");
             String low = getIntent().getStringExtra("low");
+
+            this.recyclerPosition = position;
 
             // call function to assign elements the defined values
             setDetails(companyLogo, price, dailyChange, close, open, high, low);
@@ -83,15 +92,24 @@ public class DetailActivity extends AppCompatActivity {
         lowView.setText("$" + low);
     }
 
-    private void getGraph() {
+    private void getGraph(int recyclerPosition) {
+
+        // access the ApplicationData class where all important values are stored
+        ApplicationData appData = ((ApplicationData)getApplicationContext());
+
+        ArrayList data = (ArrayList) appData.chartData.get(recyclerPosition);
 
         GraphView graphView = (GraphView) findViewById(R.id.gv_price_chart);
-        LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>(new DataPoint[] {
-                new DataPoint(1, 2),
-                new DataPoint(2, 4),
-                new DataPoint(3, 6),
-                new DataPoint(4, 8)
-        });
+
+        DataPoint[] dataPoints = new DataPoint[data.size()];
+
+        int start = data.size() - 1;
+
+        for (int i = 0; i < data.size(); i++) {
+            dataPoints[i] = new DataPoint(i, (Double) data.get((start - i)));
+        }
+
+        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(dataPoints);
 
         graphView.addSeries(series);
     }

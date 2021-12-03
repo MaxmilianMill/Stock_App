@@ -54,6 +54,8 @@ public class OverviewActivity extends AppCompatActivity {
             }
         }
 
+        System.out.println("Arraylist" + appData.chartData.get(0));
+
         // find the recyclerview by the id in the xml file
         recyclerView = findViewById(R.id.rv_overview);
         // set layout manager for recyclerview
