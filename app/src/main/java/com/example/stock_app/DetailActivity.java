@@ -1,5 +1,7 @@
 package com.example.stock_app;
 
+import static android.graphics.Color.RED;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Color;
@@ -74,7 +76,7 @@ public class DetailActivity extends AppCompatActivity {
             changeView.setTextColor(Color.GREEN);
         } else {
 
-            changeView.setTextColor(Color.RED);
+            changeView.setTextColor(RED);
         }
 
         changeView.setText(dailyChange + "%");
@@ -101,6 +103,9 @@ public class DetailActivity extends AppCompatActivity {
 
         GraphView graphView = (GraphView) findViewById(R.id.gv_price_chart);
 
+        // change the grid color to fully transparent
+        graphView.getGridLabelRenderer().setGridColor(Color.argb(0, 0, 0, 0));
+
         DataPoint[] dataPoints = new DataPoint[data.size()];
 
         int start = data.size() - 1;
@@ -110,6 +115,9 @@ public class DetailActivity extends AppCompatActivity {
         }
 
         LineGraphSeries<DataPoint> series = new LineGraphSeries<>(dataPoints);
+
+        // change the line color to white
+        series.setColor(Color.WHITE);
 
         graphView.addSeries(series);
     }
