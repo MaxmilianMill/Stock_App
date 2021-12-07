@@ -11,4 +11,5 @@
     <color name="symbol_color">#EAEAEA</color>
     <color name="background_end_color">#3F5EFB</color>
     <color name="background_start_color">#FC466B</color>
+    <color name="price_detail_text">#a6a6a6</color>
 </resources>

@@ -13,9 +13,7 @@ import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -25,7 +23,7 @@ public class DetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // set the content view to activity_detail
-        setContentView(R.layout.activity_detail);
+        setContentView(R.layout.activity_detail_item);
         // hide upper app bar
         getSupportActionBar().hide();
         // call intent function
@@ -62,7 +60,7 @@ public class DetailActivity extends AppCompatActivity {
                             String high, String low) {
         // find view and set the text to the company name
         TextView priceView = findViewById(R.id.tv_price);
-        priceView.setText(price);
+        priceView.setText("$" + price);
 
         // Find image view and set it to the company logo
         ImageView logoView = findViewById(R.id.iv_detail_logo);
@@ -81,16 +79,16 @@ public class DetailActivity extends AppCompatActivity {
 
         changeView.setText(dailyChange + "%");
 
-        TextView closeView = findViewById(R.id.tv_close);
+        TextView closeView = findViewById(R.id.close);
         closeView.setText("$" + close);
 
-        TextView openView = findViewById(R.id.tv_open);
+        TextView openView = findViewById(R.id.open);
         openView.setText("$" + open);
 
-        TextView highView = findViewById(R.id.tv_high);
+        TextView highView = findViewById(R.id.high);
         highView.setText("$" + high);
 
-        TextView lowView = findViewById(R.id.tv_low);
+        TextView lowView = findViewById(R.id.low);
         lowView.setText("$" + low);
     }
 
@@ -105,6 +103,9 @@ public class DetailActivity extends AppCompatActivity {
 
         // change the grid color to fully transparent
         graphView.getGridLabelRenderer().setGridColor(Color.argb(0, 0, 0, 0));
+
+        // set legend text color to white
+        graphView.getLegendRenderer().setTextColor(Color.WHITE);
 
         DataPoint[] dataPoints = new DataPoint[data.size()];
 
