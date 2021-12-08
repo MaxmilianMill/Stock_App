@@ -30,7 +30,7 @@ public class OverviewActivity extends AppCompatActivity {
         StrictMode.setThreadPolicy(policy);
 
         // access the ApplicationData class where all important values are stored
-        ApplicationData appData = ((ApplicationData)getApplicationContext());
+        ApplicationData appData = ((ApplicationData) getApplicationContext());
 
         // do this for every symbol
         for (int i = 0; i < appData.companySymbols.length; i++) {

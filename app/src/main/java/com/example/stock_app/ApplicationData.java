@@ -17,6 +17,10 @@ public class ApplicationData extends Application {
     public String[] low = new String[companySymbols.length];
     public ArrayList chartData = new ArrayList<>();
 
+    // user data
+    public String firstName;
+    public int id;
+
     /*
     Every Array has 3 different methods:
     1. Getter to retrieve the array from anywhere in the project
