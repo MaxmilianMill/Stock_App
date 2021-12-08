@@ -4,14 +4,13 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import java.text.DateFormat;
-import java.util.List;
+import java.io.Serializable;
 
 @Entity
-public class User {
+public class User implements Serializable {
 
     @PrimaryKey(autoGenerate = true)
-    public int userID;
+    public int id;
 
     @ColumnInfo(name = "first_name")
     public String firstName;
