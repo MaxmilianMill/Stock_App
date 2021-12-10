@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +25,8 @@ public class LoginTabFragment extends Fragment {
     EditText email;
     EditText password;
     Button login;
+    
+    PassUserData dataPasser;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
@@ -51,12 +52,21 @@ public class LoginTabFragment extends Fragment {
         return root;
     }
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        dataPasser = (PassUserData) context;
+    }
+
     public void userCheck (String email, String password){
 
         if (isConnectedToInternet()) {
             RoomDB db = RoomDB.getDbInstance(this.requireActivity().getApplicationContext());
             List<User> UserList = db.userDao().selectFromEmail(email);
             String Email = UserList.get(0).email;
+            int id = UserList.get(0).id;
+
+            dataPasser.passUserData(id);
 
             Intent intent = new Intent(getActivity(), MainActivity.class);
             startActivity(intent);
@@ -81,5 +91,9 @@ public class LoginTabFragment extends Fragment {
         }
         return false;
     }
+}
 
+interface PassUserData {
+    
+    public void passUserData(int id); 
 }

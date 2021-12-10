@@ -8,10 +8,11 @@ import android.util.Log;
 
 import com.google.android.material.tabs.TabLayout;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements PassUserData {
 
     TabLayout tabLayout;
     ViewPager viewPager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +52,17 @@ public class LoginActivity extends AppCompatActivity {
                 Log.i("TAG", "onTabReselected: " + tab.getPosition());
             }
         });
+
+    }
+
+    @Override
+    public void passUserData(int id) {
+        System.out.println("The id is: " + id);
+        Log.d("LOG", String.valueOf(id));
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
 
     }
 }

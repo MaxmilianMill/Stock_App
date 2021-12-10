@@ -65,31 +65,48 @@ public class SignupTabFragment extends Fragment {
         if (isConnectedToInternet()) {
             RoomDB db = RoomDB.getDbInstance(this.requireActivity().getApplicationContext());
 
-            //Check fields
-            if (firstname.isEmpty() || lastname.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
+            List<User> userList = db.userDao().getAllUsers();
 
-                Toast.makeText(getActivity(), "Please fill all Fields!", Toast.LENGTH_SHORT).show();
+            boolean isAlreadyActive = false;
+
+            for (User u: userList) {
+                System.out.println(u.email);
+
+                if (u.email.equals(email)) {
+                    Toast.makeText(getActivity(), "Account with email is already active", Toast.LENGTH_SHORT).show();
+                    isAlreadyActive = true;
+                }
             }
-            //Check if Password = ConfirmPassword
-            else if (!password.equals(confirmPassword)) {
 
-                Toast.makeText(getActivity(), "Passwords are not the same!", Toast.LENGTH_SHORT).show();
-            } else {
-                User user = new User();
-                user.email = email;
-                user.password = password;
-                user.firstName = firstname;
-                user.lastName = lastname;
+            if (!isAlreadyActive) {
 
-                db.userDao().insertUser(user);
+                //Check fields
+                if (firstname.isEmpty() || lastname.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
 
-                Toast.makeText(getActivity(), "User created", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Please fill all Fields!", Toast.LENGTH_SHORT).show();
+                }
+                //Check if Password = ConfirmPassword
+                else if (!password.equals(confirmPassword)) {
 
-                Log.d(TAG, "User created!");
+                    Toast.makeText(getActivity(), "Passwords are not the same!", Toast.LENGTH_SHORT).show();
+                } else {
+                    User user = new User();
+                    user.email = email;
+                    user.password = password;
+                    user.firstName = firstname;
+                    user.lastName = lastname;
 
-                Intent intent = new Intent(getActivity(), MainActivity.class);
-                startActivity(intent);
+                    db.userDao().insertUser(user);
+
+                    Toast.makeText(getActivity(), "User created", Toast.LENGTH_SHORT).show();
+
+                    Log.d(TAG, "User created!");
+
+                    Intent intent = new Intent(getActivity(), MainActivity.class);
+                    startActivity(intent);
+                }
             }
+
         } else {
             startActivityForResult(new Intent(android.provider.Settings.ACTION_SETTINGS), 0);
         }
