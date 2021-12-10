@@ -24,6 +24,7 @@
     <EditText
         android:id="@+id/etPassword"
         android:background="@drawable/edittext_background"
+        android:inputType="textPassword"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="@string/editTextPasswort"

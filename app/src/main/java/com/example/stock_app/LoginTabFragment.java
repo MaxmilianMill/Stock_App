@@ -76,7 +76,7 @@ public class LoginTabFragment extends Fragment {
                     System.out.println(u.email);
 
                     if (!u.email.equals(email)) {
-                        Toast.makeText(getActivity(), "Geben Sie ein bestehenden Nutzer ein!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "Email not found!", Toast.LENGTH_SHORT).show();
                         UserCheck = false;
                     } else {
                         UserCheck = true;

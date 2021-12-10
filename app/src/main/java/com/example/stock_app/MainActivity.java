@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
         greeting = findViewById(R.id.textHeader);
 
-        greeting.setText("Willkommen " + appData.firstName);
+        greeting.setText("Willkommen, " + appData.firstName + "!");
 
         // Funktion ButtonOverview
         // new button that is connected to the xml button with following id
