@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -25,9 +26,19 @@ import java.net.URL;
 import java.nio.charset.Charset;
 
 public class MainActivity extends AppCompatActivity {
+
+    TextView greeting;
+
     // methods gets called when app is started
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        // access the ApplicationData class where all important values are stored
+        ApplicationData appData = ((ApplicationData) getApplicationContext());
+
+        greeting = findViewById(R.id.textHeader);
+
+        greeting.setText("Willkommen " + appData.firstName);
 
         super.onCreate(savedInstanceState);
         // set the layout to the activity main xml file

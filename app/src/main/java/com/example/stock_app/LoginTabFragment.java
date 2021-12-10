@@ -66,7 +66,7 @@ public class LoginTabFragment extends Fragment {
             //connect to DB
             RoomDB db = RoomDB.getDbInstance(this.requireActivity().getApplicationContext());
 
-            List<User> userList = db.userDao().getAllUsers();
+            List<User> userList = db.userDao().selectFromEmail(email);
             boolean UserCheck = false;
             if (email.isEmpty() || password.isEmpty()) {
 
