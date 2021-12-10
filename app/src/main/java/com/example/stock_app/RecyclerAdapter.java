@@ -89,6 +89,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
                 // give the intent the company logo
                 intent.putExtra("company_logo", companyLogos[position]);
                 // give the intent the company name
+                intent.putExtra("company_symbol", companySymbols[position]);
                 intent.putExtra("price", price[position]);
                 // put all price data in extra
                 intent.putExtra("close", price[position]);

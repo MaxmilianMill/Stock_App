@@ -33,18 +33,18 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        super.onCreate(savedInstanceState);
+        // set the layout to the activity main xml file
+        setContentView(R.layout.activity_main);
+        // hide the upper app bar
+        getSupportActionBar().hide();
+
         // access the ApplicationData class where all important values are stored
         ApplicationData appData = ((ApplicationData) getApplicationContext());
 
         greeting = findViewById(R.id.textHeader);
 
         greeting.setText("Willkommen " + appData.firstName);
-
-        super.onCreate(savedInstanceState);
-        // set the layout to the activity main xml file
-        setContentView(R.layout.activity_main);
-        // hide the upper app bar
-        getSupportActionBar().hide();
 
         // Funktion ButtonOverview
         // new button that is connected to the xml button with following id

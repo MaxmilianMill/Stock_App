@@ -18,7 +18,7 @@ public class ApplicationData extends Application {
     public ArrayList chartData = new ArrayList<>();
 
     // user data
-    public String firstName;
+    public String firstName = null;
     public String lastName;
     public String email;
     public int userID;
