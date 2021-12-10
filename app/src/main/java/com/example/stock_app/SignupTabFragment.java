@@ -61,8 +61,9 @@ public class SignupTabFragment extends Fragment {
     }
 
     public void createUser(String firstname, String lastname, String email, String password, String confirmPassword) {
-
+        //if internet is connected
         if (isConnectedToInternet()) {
+            //connect to DB
             RoomDB db = RoomDB.getDbInstance(this.requireActivity().getApplicationContext());
 
             List<User> userList = db.userDao().getAllUsers();
@@ -102,16 +103,18 @@ public class SignupTabFragment extends Fragment {
 
                     Log.d(TAG, "User created!");
 
-                    Intent intent = new Intent(getActivity(), MainActivity.class);
+                    Intent intent = new Intent(getActivity(), LoginActivity.class);
                     startActivity(intent);
                 }
             }
+          //open internet-settings if the internet is not conected
 
         } else {
             startActivityForResult(new Intent(android.provider.Settings.ACTION_SETTINGS), 0);
         }
     }
 
+    //check Internet connection
     public boolean isConnectedToInternet() {
         ConnectivityManager connectivity = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
         if (connectivity != null) {

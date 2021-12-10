@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
@@ -45,6 +46,8 @@ public class LoginTabFragment extends Fragment {
 
                 userCheck(email.getText().toString(), password.getText().toString());
 
+
+
             }
         });
         return root;
@@ -59,19 +62,38 @@ public class LoginTabFragment extends Fragment {
     public void userCheck (String email, String password){
 
         if (isConnectedToInternet()) {
-            RoomDB db = RoomDB.getDbInstance(this.requireActivity().getApplicationContext());
-            List<User> UserList = db.userDao().selectFromEmail(email);
-            String Email = UserList.get(0).email;
-            int id = UserList.get(0).id;
 
-            dataPasser.passUserData(UserList.get(0).firstName,
+            //connect to DB
+            RoomDB db = RoomDB.getDbInstance(this.requireActivity().getApplicationContext());
+
+            List<User> userList = db.userDao().getAllUsers();
+            boolean UserCheck = false;
+            if (email.isEmpty() || password.isEmpty()) {
+
+                Toast.makeText(getActivity(), "Please fill all Fields!", Toast.LENGTH_SHORT).show();
+            } else {
+                for (User u : userList) {
+                    System.out.println(u.email);
+
+                    if (!u.email.equals(email)) {
+                        Toast.makeText(getActivity(), "Geben Sie ein bestehenden Nutzer ein!", Toast.LENGTH_SHORT).show();
+                        UserCheck = false;
+                    } else {
+                        UserCheck = true;
+                        List<User> UserList = db.userDao().selectFromEmail(email);
+                        String Email = UserList.get(0).email;
+                        int id = UserList.get(0).id;
+
+                        dataPasser.passUserData(UserList.get(0).firstName,
                                     UserList.get(0).lastName,
                                     UserList.get(0).email,
                                     UserList.get(0).id);
 
-            Intent intent = new Intent(getActivity(), MainActivity.class);
-            startActivity(intent);
-
+                        Intent intent = new Intent(getActivity(), MainActivity.class);
+                        startActivity(intent);
+                    }
+                }
+            }
             //Log.d(TAG, "Logged in!");
         }
         else {
