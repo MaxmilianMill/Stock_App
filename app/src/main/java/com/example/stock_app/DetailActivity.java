@@ -105,8 +105,8 @@ public class DetailActivity extends AppCompatActivity {
         graphView.getGridLabelRenderer().setGridColor(Color.argb(0, 0, 0, 0));
 
         // set legend text color to white
-        graphView.getGridLabelRenderer().setVerticalAxisTitleColor(Color.WHITE);
-        graphView.getGridLabelRenderer().setHorizontalAxisTitleColor(Color.WHITE);
+        graphView.getGridLabelRenderer().setHorizontalLabelsColor(Color.WHITE);
+        graphView.getGridLabelRenderer().setVerticalLabelsColor(Color.WHITE);
 
         DataPoint[] dataPoints = new DataPoint[data.size()];
 
