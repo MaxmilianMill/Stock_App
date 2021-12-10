@@ -56,13 +56,22 @@ public class LoginActivity extends AppCompatActivity implements PassUserData {
     }
 
     @Override
-    public void passUserData(int id) {
-        System.out.println("The id is: " + id);
-        Log.d("LOG", String.valueOf(id));
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
     }
 
     @Override
-    public void onPointerCaptureChanged(boolean hasCapture) {
-
+    public void passUserData(String firstName, String lastName, String email, int id) {
+        
+        // access the ApplicationData class where all important values are stored
+        ApplicationData appData = ((ApplicationData) getApplicationContext());
+        
+        // insert user data of active user 
+        appData.firstName = firstName; 
+        appData.lastName = lastName; 
+        appData.email = email; 
+        appData.userID = id; 
+        
+        Log.d("PASS LOGIN DATA", "User Data was successfully inserted into ApplicationData");
     }
 }

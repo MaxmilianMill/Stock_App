@@ -45,8 +45,6 @@ public class LoginTabFragment extends Fragment {
 
                 userCheck(email.getText().toString(), password.getText().toString());
 
-
-
             }
         });
         return root;
@@ -66,7 +64,10 @@ public class LoginTabFragment extends Fragment {
             String Email = UserList.get(0).email;
             int id = UserList.get(0).id;
 
-            dataPasser.passUserData(id);
+            dataPasser.passUserData(UserList.get(0).firstName,
+                                    UserList.get(0).lastName,
+                                    UserList.get(0).email,
+                                    UserList.get(0).id);
 
             Intent intent = new Intent(getActivity(), MainActivity.class);
             startActivity(intent);
@@ -95,5 +96,5 @@ public class LoginTabFragment extends Fragment {
 
 interface PassUserData {
     
-    public void passUserData(int id); 
+    public void passUserData(String firstName, String lastName, String email, int id);
 }

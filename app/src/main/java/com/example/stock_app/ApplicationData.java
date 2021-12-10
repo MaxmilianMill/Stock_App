@@ -19,7 +19,9 @@ public class ApplicationData extends Application {
 
     // user data
     public String firstName;
-    public int id;
+    public String lastName;
+    public String email;
+    public int userID;
 
     /*
     Every Array has 3 different methods:
