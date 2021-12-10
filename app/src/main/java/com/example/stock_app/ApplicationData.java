@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class ApplicationData extends Application {
 
-    // create Arrays for every important value
+    // Overview Data Arrays
     public String[] companyNames = {"Amazon", "Microsoft"};
     public String[] companySymbols = {"AMZN", "MSFT"};
     public String[] price = new String[companySymbols.length];

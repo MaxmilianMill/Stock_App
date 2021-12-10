@@ -4,20 +4,32 @@ import static android.graphics.Color.RED;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.stock_app.database.RoomDB;
+import com.example.stock_app.database.WatchlistItem;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class DetailActivity extends AppCompatActivity {
 
     int recyclerPosition;
+
+    private String companyName;
+    private String companySymbol;
+
+    Button addToWatchlist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,10 +38,35 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail_item);
         // hide upper app bar
         getSupportActionBar().hide();
+
+        // access the ApplicationData class where all important values are stored
+        ApplicationData appData = ((ApplicationData) getApplicationContext());
+
         // call intent function
         getIncomingIntent();
 
         getGraph(this.recyclerPosition);
+
+        addToWatchlist = findViewById(R.id.btn_add_watchlist);
+
+        RoomDB db = RoomDB.getDbInstance(this.getApplicationContext());
+
+        addToWatchlist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                WatchlistItem item = new WatchlistItem();
+                item.companyName = companyName;
+                item.symbol = companySymbol;
+                item.userID = appData.userID;
+
+                if (!addedToWatchlistCheck(db, item.symbol, item.userID)) {
+
+                    db.watchlistDao().insertItem(item);
+                    Toast.makeText(DetailActivity.this,companyName + "was added to your Watchlist", Toast.LENGTH_SHORT).show();
+
+                }
+            }
+        });
     }
 
     // intent function
@@ -49,6 +86,10 @@ public class DetailActivity extends AppCompatActivity {
             String low = getIntent().getStringExtra("low");
 
             this.recyclerPosition = position;
+
+            // data for watchlist table
+            this.companyName = getIntent().getStringExtra("company_name");
+            this.companySymbol = getIntent().getStringExtra("company_symbol");
 
             // call function to assign elements the defined values
             setDetails(companyLogo, price, dailyChange, close, open, high, low);
@@ -122,5 +163,23 @@ public class DetailActivity extends AppCompatActivity {
         series.setColor(Color.WHITE);
 
         graphView.addSeries(series);
+    }
+
+    // check if stock was already added to watchlist
+    public boolean addedToWatchlistCheck(RoomDB db, String symbol, int userID) {
+        boolean alreadyAdded = false;
+        List<WatchlistItem> watchlist = db.watchlistDao().watchlist(userID);
+
+        for (int i = 0; i < watchlist.size(); i++) {
+
+            if (watchlist.get(i).symbol.equals(symbol)) {
+
+                alreadyAdded = true;
+                break;
+            }
+        }
+
+        System.out.println("Chekc it is: " + alreadyAdded);
+        return alreadyAdded;
     }
 }
