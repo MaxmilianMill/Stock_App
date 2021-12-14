@@ -31,6 +31,9 @@
 - Execption RecyclerViews leer 
 
 Vielleicht: 
+# Google Maps Einbindung
+- in DetailSeiten die Unternehmensstandorte anzeigen
+
 # Trade Funktion 
 - Aktien kaufen/verkaufen 
 - Preisentwicklung anzeigen 
