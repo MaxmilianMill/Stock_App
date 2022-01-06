@@ -4,7 +4,6 @@ import static android.graphics.Color.RED;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -14,7 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.stock_app.database.RoomDB;
-import com.example.stock_app.database.WatchlistItem;
+import com.example.stock_app.database.Stock;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
@@ -54,14 +53,14 @@ public class DetailActivity extends AppCompatActivity {
         addToWatchlist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                WatchlistItem item = new WatchlistItem();
+                Stock item = new Stock();
                 item.companyName = companyName;
                 item.symbol = companySymbol;
                 item.userID = appData.userID;
 
                 if (!addedToWatchlistCheck(db, item.symbol, item.userID)) {
 
-                    db.watchlistDao().insertItem(item);
+                    db.stockDao().insertItem(item);
                     Toast.makeText(DetailActivity.this,companyName + "was added to your Watchlist", Toast.LENGTH_SHORT).show();
 
                 }
@@ -168,7 +167,7 @@ public class DetailActivity extends AppCompatActivity {
     // check if stock was already added to watchlist
     public boolean addedToWatchlistCheck(RoomDB db, String symbol, int userID) {
         boolean alreadyAdded = false;
-        List<WatchlistItem> watchlist = db.watchlistDao().watchlist(userID);
+        List<Stock> watchlist = db.stockDao().stockList(userID);
 
         for (int i = 0; i < watchlist.size(); i++) {
 
@@ -179,7 +178,7 @@ public class DetailActivity extends AppCompatActivity {
             }
         }
 
-        System.out.println("Chekc it is: " + alreadyAdded);
+        System.out.println("Check it is: " + alreadyAdded);
         return alreadyAdded;
     }
 }

@@ -16,6 +16,7 @@ public class ApplicationData extends Application {
     public String[] high = new String[companySymbols.length];
     public String[] low = new String[companySymbols.length];
     public ArrayList chartData = new ArrayList<>();
+    public boolean alreadyUpdated = false;
 
     // user data
     public String firstName = null;

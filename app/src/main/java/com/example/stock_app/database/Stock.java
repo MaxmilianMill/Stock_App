@@ -11,10 +11,13 @@ import androidx.room.PrimaryKey;
                                     parentColumns = "id",
                                     childColumns = "userID",
                                     onDelete = CASCADE))
-public class WatchlistItem {
+public class Stock {
 
     @PrimaryKey(autoGenerate = true)
-    public int watchlistID;
+    public int stockID;
+
+    @ColumnInfo(name = "last_update")
+    public long lastUpdate;
 
     @ColumnInfo(name = "company_name")
     public String companyName;
@@ -25,4 +28,24 @@ public class WatchlistItem {
     @ColumnInfo(name = "userID")
     public int userID;
 
+    @ColumnInfo(name = "close")
+    public double close;
+
+    @ColumnInfo(name = "open")
+    public double open;
+
+    @ColumnInfo(name = "high")
+    public double high;
+
+    @ColumnInfo(name = "low")
+    public double low;
+
+    @ColumnInfo(name = "daily_change")
+    public double dailyChange;
+
+    @ColumnInfo(name = "last_month")
+    public double lastMonthData;
+
+    @ColumnInfo(name = "watchlist")
+    public boolean addedToWatchlist;
 }

@@ -14,8 +14,6 @@ public class OverviewActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     // new adapter object
     RecyclerAdapter adapter;
-    // new API object
-    MarketStackAPI api;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,36 +23,9 @@ public class OverviewActivity extends AppCompatActivity {
         setContentView(R.layout.overview_activity);
         // hide upper app bar
         getSupportActionBar().hide();
-        // allow certain settings that will enable the api to retrieve the data from the internet
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
 
         // access the ApplicationData class where all important values are stored
         ApplicationData appData = ((ApplicationData) getApplicationContext());
-
-        // do this for every symbol
-        for (int i = 0; i < appData.companySymbols.length; i++) {
-            // create new object of api
-            api = new MarketStackAPI();
-            // call the connect method for every symbol in the array
-            api.apiConnectDaily(appData.companySymbols[i]);
-            // try the following statements
-            try {
-                // add all data points into the arrays
-                appData.addPrice(String.valueOf(api.getClose()), i);
-                appData.addOpen(String.valueOf(api.getOpen()), i);
-                appData.addHigh(String.valueOf(api.getHigh()), i);
-                appData.addLow(String.valueOf(api.getLow()), i);
-                appData.addDailyChange(String.valueOf(api.getDailyChange()), i);
-                appData.addChartData(api.getChartData());
-
-                // handle json exceptions
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-
-        System.out.println("Arraylist" + appData.chartData.get(0));
 
         // find the recyclerview by the id in the xml file
         recyclerView = findViewById(R.id.rv_overview);
