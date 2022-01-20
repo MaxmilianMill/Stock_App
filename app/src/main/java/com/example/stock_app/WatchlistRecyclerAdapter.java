@@ -13,8 +13,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
-
 public class WatchlistRecyclerAdapter extends RecyclerView.Adapter<WatchlistRecyclerAdapter.ViewHolder> {
     // new String Arrays
     String[] companyNames;
@@ -28,12 +26,12 @@ public class WatchlistRecyclerAdapter extends RecyclerView.Adapter<WatchlistRecy
     int[] companyLogos;
     // new context object
     Context context;
-    boolean[] inWatchlist;
+    Integer[] indexOfStock;
 
     // methods that receives the arrays from the OverviewActivity class and set the newly declared Arrays to the retrieved ones
     public WatchlistRecyclerAdapter(Context context, String[] companyNames, int[] companyLogos, String[] price,
-                           String[] companySymbols, String[] dailyChange, String[] open, String[] high,
-                           String[] low, boolean[] inWatchlist) {
+                                    String[] companySymbols, String[] dailyChange, String[] open, String[] high,
+                                    String[] low, Integer[] indexOfStock) {
 
         this.companyNames = companyNames;
         this.companySymbols = companySymbols;
@@ -44,7 +42,7 @@ public class WatchlistRecyclerAdapter extends RecyclerView.Adapter<WatchlistRecy
         this.high = high;
         this.low = low;
         this.context = context;
-        this.inWatchlist = inWatchlist;
+        this.indexOfStock = indexOfStock;
     }
 
     // method to create a new item in the recyclerview element
@@ -61,18 +59,22 @@ public class WatchlistRecyclerAdapter extends RecyclerView.Adapter<WatchlistRecy
     @Override
     public void onBindViewHolder(@NonNull WatchlistRecyclerAdapter.ViewHolder holder, int position) {
 
+        int adjPosition = indexOfStock[position];
+
+        System.out.println(adjPosition);
+
         // set the views to the according value
-        holder.nameView.setText(companyNames[position]);
-        holder.priceView.setText("$" + price[position]);
-        holder.symbolView.setText(companySymbols[position]);
-        holder.changeView.setText(dailyChange[position] + "%");
-        holder.logoView.setImageResource(companyLogos[position]);
+        holder.nameView.setText(companyNames[adjPosition]);
+        holder.priceView.setText("$" + price[adjPosition]);
+        holder.symbolView.setText(companySymbols[adjPosition]);
+        holder.changeView.setText(dailyChange[adjPosition] + "%");
+        holder.logoView.setImageResource(companyLogos[adjPosition]);
 
         // conditionally change the daily change text color depending on positive or negative change
-        if (Float.parseFloat(dailyChange[position]) >= 0) {
+        if (Float.parseFloat(dailyChange[adjPosition]) >= 0) {
             // change to green
             holder.changeView.setTextColor(Color.GREEN);
-        } else if (Float.parseFloat(dailyChange[position]) < 0) {
+        } else if (Float.parseFloat(dailyChange[adjPosition]) < 0) {
             // change to red
             holder.changeView.setTextColor(Color.RED);
         }
@@ -82,24 +84,24 @@ public class WatchlistRecyclerAdapter extends RecyclerView.Adapter<WatchlistRecy
             @Override
             public void onClick(View v) {
                 // output a small message on app
-                Toast.makeText(context, "Clicked" + companyNames[position], Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Clicked" + companyNames[adjPosition], Toast.LENGTH_SHORT).show();
 
                 // new intent with reference to DetailActivity class
                 Intent intent = new Intent(context, DetailActivity.class);
                 // get the position
-                intent.putExtra("position", position);
+                intent.putExtra("position", adjPosition);
                 // give the intent the company logo
-                intent.putExtra("company_logo", companyLogos[position]);
+                intent.putExtra("company_logo", companyLogos[adjPosition]);
                 // give the intent the company name
-                intent.putExtra("company_name", companyNames[position]);
-                intent.putExtra("company_symbol", companySymbols[position]);
-                intent.putExtra("price", price[position]);
+                intent.putExtra("company_name", companyNames[adjPosition]);
+                intent.putExtra("company_symbol", companySymbols[adjPosition]);
+                intent.putExtra("price", price[adjPosition]);
                 // put all price data in extra
-                intent.putExtra("close", price[position]);
-                intent.putExtra("open", open[position]);
-                intent.putExtra("high", high[position]);
-                intent.putExtra("low", low[position]);
-                intent.putExtra("daily_change", dailyChange[position]);
+                intent.putExtra("close", price[adjPosition]);
+                intent.putExtra("open", open[adjPosition]);
+                intent.putExtra("high", high[adjPosition]);
+                intent.putExtra("low", low[adjPosition]);
+                intent.putExtra("daily_change", dailyChange[adjPosition]);
                 // start
                 context.startActivity(intent);
             }
@@ -108,9 +110,7 @@ public class WatchlistRecyclerAdapter extends RecyclerView.Adapter<WatchlistRecy
 
     // counts the amount of items to create
     @Override
-    public int getItemCount() {
-        return companyNames.length;
-    }
+    public int getItemCount() { return indexOfStock.length; }
 
     // class for the different elements
     public class ViewHolder extends RecyclerView.ViewHolder {

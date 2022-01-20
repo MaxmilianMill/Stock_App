@@ -5,7 +5,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.util.Log;
 
 import com.example.stock_app.database.RoomDB;
 import com.example.stock_app.database.Stock;
@@ -15,7 +14,7 @@ import java.util.List;
 
 public class WatchlistActivity extends AppCompatActivity {
 
-    public boolean[] inWatchlist;
+    public Integer[] indexOfStock;
     WatchlistRecyclerAdapter watchlistRecyclerAdapter;
     RecyclerView recyclerView;
 
@@ -23,31 +22,31 @@ public class WatchlistActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_watchlist);
+        // hide upper app bar
+        getSupportActionBar().hide();
         // access the ApplicationData class where all important values are stored
         ApplicationData appData = ((ApplicationData) getApplicationContext());
 
         RoomDB db = RoomDB.getDbInstance(this.getApplicationContext());
 
         // get all tickers that are on the watchlist
-        List<Stock> watchlist = db.stockDao().stockList(appData.userID);
+        List<Stock> watchlist = db.stockDao().stockList(appData.userID, true);
 
-        inWatchlist = new boolean[appData.companySymbols.length];
+        indexOfStock = new Integer[watchlist.size()];
 
-        System.out.println(watchlist.size());
+        for (Stock stock: watchlist) {
+            
+            for (int i = 0; i < appData.companySymbols.length; i++) {
+                
+                if (stock.symbol.equals(appData.companySymbols[i])) {
 
-        if (!watchlist.isEmpty()) {
+                    indexOfStock[watchlist.indexOf(stock)] = Arrays.asList(appData.companySymbols).indexOf(stock.symbol);
+                    System.out.println(Arrays.asList(appData.companySymbols).indexOf(stock.symbol));
 
-            for (Stock stock: watchlist) {
-
-                // loop through appData symbols
-                for (int i = 0; i < appData.companySymbols.length; i++) {
-
-                    // if watchlist symbol equals appData symbol -> add a 1 in an array else do 0
-                    inWatchlist[i] = appData.companySymbols[i].equals(stock.symbol);
+                    break;
                 }
             }
         }
-        Log.d("WATCHLIST CHECK", "Watchlist " + Arrays.toString(inWatchlist));
 
         recyclerView = findViewById(R.id.rv_watchlist);
 
@@ -55,7 +54,7 @@ public class WatchlistActivity extends AppCompatActivity {
 
         watchlistRecyclerAdapter = new WatchlistRecyclerAdapter(this, appData.companyNames, appData.companyLogos,
                 appData.price, appData.companySymbols, appData.dailyChange, appData.open, appData.high,
-                appData.low, inWatchlist);
+                appData.low, indexOfStock);
 
         recyclerView.setAdapter(watchlistRecyclerAdapter);
     }

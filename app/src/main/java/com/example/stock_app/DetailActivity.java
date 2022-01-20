@@ -60,6 +60,8 @@ public class DetailActivity extends AppCompatActivity {
 
                 if (!addedToWatchlistCheck(db, item.symbol, item.userID)) {
 
+                    item.addedToWatchlist = true;
+
                     db.stockDao().insertItem(item);
                     Toast.makeText(DetailActivity.this,companyName + "was added to your Watchlist", Toast.LENGTH_SHORT).show();
 
