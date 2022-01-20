@@ -138,6 +138,24 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // Funktion ButtonMap
+        // new button that is connected to the xml button with following id
+        Button buttonMap = (Button) findViewById(R.id.button_map);
+        // set an on click listener to button
+        buttonMap.setOnClickListener(new View.OnClickListener() {
+            // when button is clicked
+            @Override
+            public void onClick(View v) {
+                if (isConnectedToInternet()) {
+                    // when button is clicked --> call SearchStockActivity class
+                    Intent i = new Intent(MainActivity.this, GoogleMaps_Activitiy.class);
+                    // start
+                    startActivity(i);
+                } else {
+                    startActivityForResult(new Intent(android.provider.Settings.ACTION_SETTINGS), 0);
+                }
+            }
+        });
     }
 
     public boolean isConnectedToInternet() {
