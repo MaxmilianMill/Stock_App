@@ -38,7 +38,7 @@ public class MarketStackAPI {
     public void apiConnectDaily(String ticker) {
 
         // api key
-        String apiKey = "72acce16350ca73055d0de4c3b5696c6";
+        String apiKey = "35abe21607f947d09c7aa76e44e167dd";
 
         // dynamic url creation
         String addressLink = "http://api.marketstack.com/v1/eod?access_key=" + apiKey + "&symbols=" + ticker + "&limit=30";

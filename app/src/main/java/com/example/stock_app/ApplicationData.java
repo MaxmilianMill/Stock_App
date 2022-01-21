@@ -25,6 +25,17 @@ public class ApplicationData extends Application {
     public int userID;
 
     /*
+    public String[] companyNames = {"Amazon", "Microsoft", "Amazon", "Microsoft", "Amazon", "Microsoft",
+                                    "Amazon", "Microsoft", "Amazon", "Microsoft", "Amazon", "Microsoft"};
+    public String[] companySymbols = {"AMZN", "MSFT", "AMZN", "MSFT", "AMZN", "MSFT", "AMZN", "MSFT",
+                                    "AMZN", "MSFT", "AMZN", "MSFT"};
+    public String[] price = new String[companySymbols.length];
+    public String[] dailyChange = new String[companySymbols.length];
+    public int[] companyLogos = {R.drawable.amazon, R.drawable.microsoft, R.drawable.amazon, R.drawable.microsoft,
+                                R.drawable.amazon, R.drawable.microsoft, R.drawable.amazon, R.drawable.microsoft,
+                                R.drawable.amazon, R.drawable.microsoft, R.drawable.amazon, R.drawable.microsoft};
+     */
+    /*
     Every Array has 3 different methods:
     1. Getter to retrieve the array from anywhere in the project
     2. Setter to change the array from anywhere in the project
