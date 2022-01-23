@@ -69,6 +69,7 @@ public class LoginTabFragment extends Fragment {
             //connect to DB
             RoomDB db = RoomDB.getDbInstance(this.requireActivity().getApplicationContext());
 
+            // load user with email from database
             List<User> userList = db.userDao().selectFromEmail(email);
             boolean UserCheck = false;
             //falls Email oder password leer
@@ -86,9 +87,12 @@ public class LoginTabFragment extends Fragment {
                     } else {
                         UserCheck = true;
                         List<User> UserList = db.userDao().selectFromEmail(email);
+                        /*
                         String Email = UserList.get(0).email;
                         int id = UserList.get(0).id;
+                        */
 
+                        // Übergebe Userdaten aus DB an Interface
                         dataPasser.passUserData(UserList.get(0).firstName,
                                     UserList.get(0).lastName,
                                     UserList.get(0).email,

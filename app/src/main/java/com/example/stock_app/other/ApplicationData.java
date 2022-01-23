@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class ApplicationData extends Application {
 
-    // Overview Data Arrays
+    // Stock Data Arrays
     public String[] companyNames = {"Amazon", "Microsoft"};
     public String[] companySymbols = {"AMZN", "MSFT"};
     public String[] price = new String[companySymbols.length];
@@ -44,6 +44,7 @@ public class ApplicationData extends Application {
     3. Add to add a value into the array
      */
 
+    // Getter, Setter and Add methods
     public String[] getCompanyNames() {
         return companyNames;
     }

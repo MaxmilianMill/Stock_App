@@ -61,13 +61,14 @@ public class LoginActivity extends AppCompatActivity implements PassUserData {
 
     }
 
+    // Empfange Daten aus Interface in LoginTabFragment Klasse
     @Override
     public void passUserData(String firstName, String lastName, String email, int id) {
         
         // access the ApplicationData class where all important values are stored
         ApplicationData appData = ((ApplicationData) getApplicationContext());
         
-        // insert user data of active user 
+        // insert user data --> active user
         appData.firstName = firstName; 
         appData.lastName = lastName; 
         appData.email = email; 

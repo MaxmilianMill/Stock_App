@@ -65,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
 
+            // if stock data is already downloaded --> don't reload in this session
             appData.alreadyUpdated = true;
 
             Log.d("LOAD STOCK DATA", "LOADING SUCCESSFUL");

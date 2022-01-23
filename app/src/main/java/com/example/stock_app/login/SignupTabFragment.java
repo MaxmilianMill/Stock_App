@@ -52,7 +52,11 @@ public class SignupTabFragment extends Fragment {
             public void onClick(View v) {
 
                 //create User
-                createUser(firstname.getText().toString(), lastname.getText().toString(), email.getText().toString(), password.getText().toString(), confirmPassword.getText().toString());
+                createUser(firstname.getText().toString(),
+                            lastname.getText().toString(),
+                            email.getText().toString(),
+                            password.getText().toString(),
+                            confirmPassword.getText().toString());
 
             }
         });
@@ -65,19 +69,24 @@ public class SignupTabFragment extends Fragment {
             //connect to DB
             RoomDB db = RoomDB.getDbInstance(this.requireActivity().getApplicationContext());
 
+            // get all users from database
             List<User> userList = db.userDao().getAllUsers();
 
+            // check if the user is already added to database
             boolean isAlreadyActive = false;
 
+            // check if new user email equals email of already active user
             for (User u: userList) {
                 System.out.println(u.email);
 
                 if (u.email.equals(email)) {
                     Toast.makeText(getActivity(), "Account with email is already active", Toast.LENGTH_SHORT).show();
+                    // if user email is already occupied
                     isAlreadyActive = true;
                 }
             }
 
+            // if user email is not occupied
             if (!isAlreadyActive) {
 
                 //Check fields
@@ -90,12 +99,14 @@ public class SignupTabFragment extends Fragment {
 
                     Toast.makeText(getActivity(), "Passwords are not the same!", Toast.LENGTH_SHORT).show();
                 } else {
+                    // create new user
                     User user = new User();
                     user.email = email;
                     user.password = password;
                     user.firstName = firstname;
                     user.lastName = lastname;
 
+                    // insert user in db
                     db.userDao().insertUser(user);
 
                     Toast.makeText(getActivity(), "User created", Toast.LENGTH_SHORT).show();
