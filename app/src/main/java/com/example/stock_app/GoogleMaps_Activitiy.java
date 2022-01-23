@@ -102,73 +102,73 @@ public class GoogleMaps_Activitiy extends FragmentActivity implements OnMapReady
         //Längen-,Breitengrade initiieren
         LatLng Amazon = new LatLng(48.183169776597346, 11.595640115487832);
         //Marker auf der Map setzen für die Position
-        map.addMarker(new MarkerOptions().position(Apple).title("Amazon"));
+        map.addMarker(new MarkerOptions().position(Amazon).title("Amazon"));
         //Kamera bei Klick zentrieren
-        map.moveCamera(CameraUpdateFactory.newLatLng(Apple));
+        map.moveCamera(CameraUpdateFactory.newLatLng(Amazon));
 
     //Marker für Tesla setzen
         //Längen-,Breitengrade initiieren
         LatLng Tesla = new LatLng(52.392658635258364, 13.541609300192011);
         //Marker auf der Map setzen für die Position
-        map.addMarker(new MarkerOptions().position(Apple).title("Tesla"));
+        map.addMarker(new MarkerOptions().position(Tesla).title("Tesla"));
         //Kamera bei Klick zentrieren
-        map.moveCamera(CameraUpdateFactory.newLatLng(Apple));
+        map.moveCamera(CameraUpdateFactory.newLatLng(Tesla));
 
     //Marker für NVIDIA setzen
         //Längen-,Breitengrade initiieren
         LatLng NVIDIA = new LatLng(50.80517583171322, 6.152707068259437);
         //Marker auf der Map setzen für die Position
-        map.addMarker(new MarkerOptions().position(Apple).title("NVIDIA"));
+        map.addMarker(new MarkerOptions().position(NVIDIA).title("NVIDIA"));
         //Kamera bei Klick zentrieren
-        map.moveCamera(CameraUpdateFactory.newLatLng(Apple));
+        map.moveCamera(CameraUpdateFactory.newLatLng(NVIDIA));
 
     //Marker für JPMorgan Chase setzen
         //Längen-,Breitengrade initiieren
         LatLng JPMorgan = new LatLng(50.110723267034686, 8.673333569449413);
         //Marker auf der Map setzen für die Position
-        map.addMarker(new MarkerOptions().position(Apple).title("JPMorgan Chase"));
+        map.addMarker(new MarkerOptions().position(JPMorgan).title("JPMorgan Chase"));
         //Kamera bei Klick zentrieren
-        map.moveCamera(CameraUpdateFactory.newLatLng(Apple));
+        map.moveCamera(CameraUpdateFactory.newLatLng(JPMorgan));
 
     //Marker für VISA setzen
         //Längen-,Breitengrade initiieren
         LatLng VISA = new LatLng(50.11369838362454, 8.671767664197299);
         //Marker auf der Map setzen für die Position
-        map.addMarker(new MarkerOptions().position(Apple).title("VISA"));
+        map.addMarker(new MarkerOptions().position(VISA).title("VISA"));
         //Kamera bei Klick zentrieren
-        map.moveCamera(CameraUpdateFactory.newLatLng(Apple));
+        map.moveCamera(CameraUpdateFactory.newLatLng(VISA));
 
     //Marker für PayPal setzen
         //Längen-,Breitengrade initiieren
         LatLng PayPal = new LatLng(52.40651378398821, 13.187217317846539);
         //Marker auf der Map setzen für die Position
-        map.addMarker(new MarkerOptions().position(Apple).title("PayPal"));
+        map.addMarker(new MarkerOptions().position(PayPal).title("PayPal"));
         //Kamera bei Klick zentrieren
-        map.moveCamera(CameraUpdateFactory.newLatLng(Apple));
+        map.moveCamera(CameraUpdateFactory.newLatLng(PayPal));
 
     //Marker für Procter & Gamble setzen
         //Längen-,Breitengrade initiieren
         LatLng PandG = new LatLng(50.143876657943025, 8.532740501436438);
         //Marker auf der Map setzen für die Position
-        map.addMarker(new MarkerOptions().position(Apple).title("Procter & Gamble"));
+        map.addMarker(new MarkerOptions().position(PandG).title("Procter & Gamble"));
         //Kamera bei Klick zentrieren
-        map.moveCamera(CameraUpdateFactory.newLatLng(Apple));
+        map.moveCamera(CameraUpdateFactory.newLatLng(PandG));
 
     //Marker für Mastercard setzen
         //Längen-,Breitengrade initiieren
         LatLng Mastercard = new LatLng(50.71073372717604, 4.40929293246353);
         //Marker auf der Map setzen für die Position
-        map.addMarker(new MarkerOptions().position(Apple).title("Mastercard"));
+        map.addMarker(new MarkerOptions().position(Mastercard).title("Mastercard"));
         //Kamera bei Klick zentrieren
-        map.moveCamera(CameraUpdateFactory.newLatLng(Apple));
+        map.moveCamera(CameraUpdateFactory.newLatLng(Mastercard));
 
     //Marker für Walt Disney setzen
         //Längen-,Breitengrade initiieren
         LatLng WaltDisney = new LatLng(48.144539790579806, 11.53766533891783);
         //Marker auf der Map setzen für die Position
-        map.addMarker(new MarkerOptions().position(Apple).title("Walt Disney"));
+        map.addMarker(new MarkerOptions().position(WaltDisney).title("Walt Disney"));
         //Kamera bei Klick zentrieren
-        map.moveCamera(CameraUpdateFactory.newLatLng(Apple));
+        map.moveCamera(CameraUpdateFactory.newLatLng(WaltDisney));
     }
 
 }
