@@ -40,18 +40,6 @@
             app:layout_constraintTop_toBottomOf="@+id/textHeader" />
 
         <Button
-            android:id="@+id/button_detailpage"
-            android:layout_width="wrap_content"
-            android:layout_height="77dp"
-            android:layout_marginTop="30dp"
-            android:minWidth="200dp"
-            android:text="@string/buttondetailpage"
-            android:background="@drawable/button_background"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/button_overview" />
-
-        <Button
             android:id="@+id/button_watchlist"
             android:layout_width="wrap_content"
             android:layout_height="77dp"
@@ -61,16 +49,16 @@
             android:background="@drawable/button_background"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/button_detailpage" />
+            app:layout_constraintTop_toBottomOf="@id/button_overview" />
 
         <Button
             android:id="@+id/button_map"
             android:layout_width="wrap_content"
             android:layout_height="77dp"
-            android:layout_marginTop="108dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/button_background"
             android:minWidth="200dp"
             android:text="Map"
-            android:background="@drawable/button_background"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/button_watchlist" />

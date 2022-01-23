@@ -46,9 +46,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SearchStockActivity"
-            android:exported="false" />
-        <activity
             android:name=".DetailActivity"
             android:exported="false" />
         <activity

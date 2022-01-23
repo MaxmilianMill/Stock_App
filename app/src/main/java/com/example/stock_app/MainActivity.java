@@ -100,25 +100,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Funktion ButtonSearchStock
-        // new button that is connected to the xml button with following id
-        Button buttonSearchStock = (Button) findViewById(R.id.button_detailpage);
-        // set an on click listener to button
-        buttonSearchStock.setOnClickListener(new View.OnClickListener() {
-            // when button is clicked
-            @Override
-            public void onClick(View v) {
-                if (isConnectedToInternet()) {
-                    // when button is clicked --> call SearchStockActivity class
-                    Intent i = new Intent(MainActivity.this, SearchStockActivity.class);
-                    // start
-                    startActivity(i);
-                } else {
-                    startActivityForResult(new Intent(android.provider.Settings.ACTION_SETTINGS), 0);
-                }
-            }
-        });
-
         // Funktion ButtonWatchlist
         // new button that is connected to the xml button with following id
         Button buttonWatchList = (Button) findViewById(R.id.button_watchlist);
