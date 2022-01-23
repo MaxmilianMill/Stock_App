@@ -1,4 +1,4 @@
-package com.example.stock_app;
+package com.example.stock_app.overview;
 
 import static android.graphics.Color.RED;
 
@@ -12,8 +12,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.stock_app.R;
 import com.example.stock_app.database.RoomDB;
 import com.example.stock_app.database.Stock;
+import com.example.stock_app.other.ApplicationData;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;

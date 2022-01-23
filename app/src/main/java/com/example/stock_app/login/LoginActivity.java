@@ -1,4 +1,4 @@
-package com.example.stock_app;
+package com.example.stock_app.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
@@ -6,6 +6,8 @@ import androidx.viewpager.widget.ViewPager;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.example.stock_app.R;
+import com.example.stock_app.other.ApplicationData;
 import com.google.android.material.tabs.TabLayout;
 
 public class LoginActivity extends AppCompatActivity implements PassUserData {

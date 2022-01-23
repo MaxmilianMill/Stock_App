@@ -1,13 +1,13 @@
-package com.example.stock_app;
+package com.example.stock_app.overview;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.os.StrictMode;
 
-import org.json.JSONException;
+import com.example.stock_app.other.ApplicationData;
+import com.example.stock_app.R;
 
 public class OverviewActivity extends AppCompatActivity {
     // new recyclerview object

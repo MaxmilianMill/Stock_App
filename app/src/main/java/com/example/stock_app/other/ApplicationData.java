@@ -1,6 +1,8 @@
-package com.example.stock_app;
+package com.example.stock_app.other;
 
 import android.app.Application;
+
+import com.example.stock_app.R;
 
 import java.util.ArrayList;
 

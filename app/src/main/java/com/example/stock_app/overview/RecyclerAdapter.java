@@ -1,4 +1,4 @@
-package com.example.stock_app;
+package com.example.stock_app.overview;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,7 +14,9 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class WatchlistRecyclerAdapter extends RecyclerView.Adapter<WatchlistRecyclerAdapter.ViewHolder> {
+import com.example.stock_app.R;
+
+public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
     // new String Arrays
     String[] companyNames;
     String[] companySymbols;
@@ -27,12 +29,11 @@ public class WatchlistRecyclerAdapter extends RecyclerView.Adapter<WatchlistRecy
     int[] companyLogos;
     // new context object
     Context context;
-    Integer[] indexOfStock;
 
     // methods that receives the arrays from the OverviewActivity class and set the newly declared Arrays to the retrieved ones
-    public WatchlistRecyclerAdapter(Context context, String[] companyNames, int[] companyLogos, String[] price,
-                                    String[] companySymbols, String[] dailyChange, String[] open, String[] high,
-                                    String[] low, Integer[] indexOfStock) {
+    public RecyclerAdapter(Context context, String[] companyNames, int[] companyLogos, String[] price,
+                           String[] companySymbols, String[] dailyChange, String[] open, String[] high,
+                           String[] low) {
 
         this.companyNames = companyNames;
         this.companySymbols = companySymbols;
@@ -43,13 +44,12 @@ public class WatchlistRecyclerAdapter extends RecyclerView.Adapter<WatchlistRecy
         this.high = high;
         this.low = low;
         this.context = context;
-        this.indexOfStock = indexOfStock;
     }
 
     // method to create a new item in the recyclerview element
     @NonNull
     @Override
-    public WatchlistRecyclerAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RecyclerAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View view = layoutInflater.inflate(R.layout.overview_item, parent, false);
         ViewHolder viewHolder = new ViewHolder(view);
@@ -58,24 +58,20 @@ public class WatchlistRecyclerAdapter extends RecyclerView.Adapter<WatchlistRecy
 
     // method to set the elements inside every item
     @Override
-    public void onBindViewHolder(@NonNull WatchlistRecyclerAdapter.ViewHolder holder, int position) {
-
-        int adjPosition = indexOfStock[position];
-
-        System.out.println(adjPosition);
+    public void onBindViewHolder(@NonNull RecyclerAdapter.ViewHolder holder, int position) {
 
         // set the views to the according value
-        holder.nameView.setText(companyNames[adjPosition]);
-        holder.priceView.setText("$" + price[adjPosition]);
-        holder.symbolView.setText(companySymbols[adjPosition]);
-        holder.changeView.setText(dailyChange[adjPosition] + "%");
-        holder.logoView.setImageResource(companyLogos[adjPosition]);
+        holder.nameView.setText(companyNames[position]);
+        holder.priceView.setText("$" + price[position]);
+        holder.symbolView.setText(companySymbols[position]);
+        holder.changeView.setText(dailyChange[position] + "%");
+        holder.logoView.setImageResource(companyLogos[position]);
 
         // conditionally change the daily change text color depending on positive or negative change
-        if (Float.parseFloat(dailyChange[adjPosition]) >= 0) {
+        if (Float.parseFloat(dailyChange[position]) >= 0) {
             // change to green
             holder.changeView.setTextColor(Color.GREEN);
-        } else if (Float.parseFloat(dailyChange[adjPosition]) < 0) {
+        } else if (Float.parseFloat(dailyChange[position]) < 0) {
             // change to red
             holder.changeView.setTextColor(Color.RED);
         }
@@ -85,24 +81,24 @@ public class WatchlistRecyclerAdapter extends RecyclerView.Adapter<WatchlistRecy
             @Override
             public void onClick(View v) {
                 // output a small message on app
-                Toast.makeText(context, "Clicked" + companyNames[adjPosition], Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Clicked" + companyNames[position], Toast.LENGTH_SHORT).show();
 
                 // new intent with reference to DetailActivity class
                 Intent intent = new Intent(context, DetailActivity.class);
                 // get the position
-                intent.putExtra("position", adjPosition);
+                intent.putExtra("position", position);
                 // give the intent the company logo
-                intent.putExtra("company_logo", companyLogos[adjPosition]);
+                intent.putExtra("company_logo", companyLogos[position]);
                 // give the intent the company name
-                intent.putExtra("company_name", companyNames[adjPosition]);
-                intent.putExtra("company_symbol", companySymbols[adjPosition]);
-                intent.putExtra("price", price[adjPosition]);
+                intent.putExtra("company_name", companyNames[position]);
+                intent.putExtra("company_symbol", companySymbols[position]);
+                intent.putExtra("price", price[position]);
                 // put all price data in extra
-                intent.putExtra("close", price[adjPosition]);
-                intent.putExtra("open", open[adjPosition]);
-                intent.putExtra("high", high[adjPosition]);
-                intent.putExtra("low", low[adjPosition]);
-                intent.putExtra("daily_change", dailyChange[adjPosition]);
+                intent.putExtra("close", price[position]);
+                intent.putExtra("open", open[position]);
+                intent.putExtra("high", high[position]);
+                intent.putExtra("low", low[position]);
+                intent.putExtra("daily_change", dailyChange[position]);
                 // start
                 context.startActivity(intent);
             }
@@ -111,7 +107,9 @@ public class WatchlistRecyclerAdapter extends RecyclerView.Adapter<WatchlistRecy
 
     // counts the amount of items to create
     @Override
-    public int getItemCount() { return indexOfStock.length; }
+    public int getItemCount() {
+        return companyNames.length;
+    }
 
     // class for the different elements
     public class ViewHolder extends RecyclerView.ViewHolder {

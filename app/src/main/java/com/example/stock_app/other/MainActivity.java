@@ -1,8 +1,6 @@
-package com.example.stock_app;
+package com.example.stock_app.other;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,16 +13,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.example.stock_app.R;
+import com.example.stock_app.overview.OverviewActivity;
+import com.example.stock_app.watchlist.WatchlistActivity;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.net.URL;
-import java.nio.charset.Charset;
+import org.json.JSONException;
 
 public class MainActivity extends AppCompatActivity {
 

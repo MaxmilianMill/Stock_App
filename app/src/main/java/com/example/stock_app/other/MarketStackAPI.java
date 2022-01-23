@@ -1,4 +1,4 @@
-package com.example.stock_app;
+package com.example.stock_app.other;
 
 import org.json.JSONArray;
 import org.json.JSONException;

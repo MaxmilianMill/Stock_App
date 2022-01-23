@@ -1,4 +1,4 @@
-package com.example.stock_app;
+package com.example.stock_app.watchlist;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
+import com.example.stock_app.other.ApplicationData;
+import com.example.stock_app.R;
 import com.example.stock_app.database.RoomDB;
 import com.example.stock_app.database.Stock;
 

@@ -1,4 +1,4 @@
-package com.example.stock_app;
+package com.example.stock_app.login;
 
 import android.content.Context;
 

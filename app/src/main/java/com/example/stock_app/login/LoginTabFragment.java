@@ -1,4 +1,4 @@
-package com.example.stock_app;
+package com.example.stock_app.login;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,8 +14,10 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.stock_app.R;
 import com.example.stock_app.database.RoomDB;
 import com.example.stock_app.database.User;
+import com.example.stock_app.other.MainActivity;
 
 import java.util.List;
 
