@@ -43,7 +43,7 @@ public class LoginTabFragment extends Fragment {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                //ausführen der Funktion - email & password sollen in string gesetzt werde
                 userCheck(email.getText().toString(), password.getText().toString());
 
 
@@ -56,11 +56,12 @@ public class LoginTabFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        //?
         dataPasser = (PassUserData) context;
     }
 
     public void userCheck (String email, String password){
-
+        //check ob Funktion erfüllt
         if (isConnectedToInternet()) {
 
             //connect to DB
@@ -68,14 +69,16 @@ public class LoginTabFragment extends Fragment {
 
             List<User> userList = db.userDao().selectFromEmail(email);
             boolean UserCheck = false;
+            //falls Email oder password leer
             if (email.isEmpty() || password.isEmpty()) {
-
+                //show text
                 Toast.makeText(getActivity(), "Please fill all Fields!", Toast.LENGTH_SHORT).show();
             } else {
                 for (User u : userList) {
                     System.out.println(u.email);
-
+                    //wenn die email nicht mit mit der DB-email übereinstimmt
                     if (!u.email.equals(email)) {
+                        //show text
                         Toast.makeText(getActivity(), "Email not found!", Toast.LENGTH_SHORT).show();
                         UserCheck = false;
                     } else {
