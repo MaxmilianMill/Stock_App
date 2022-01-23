@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -76,7 +77,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         }
 
         // set on click listener on the company name view
-        holder.nameView.setOnClickListener(new View.OnClickListener() {
+        holder.stockView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // output a small message on app
@@ -119,6 +120,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         TextView symbolView;
         TextView changeView;
         ImageView logoView;
+        CardView stockView;
 
         // method to assign views the matching xml elements
         public ViewHolder(@NonNull View itemView) {
@@ -128,6 +130,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             logoView = itemView.findViewById(R.id.company_logo);
             priceView = itemView.findViewById(R.id.price);
             changeView = itemView.findViewById(R.id.daily_change);
+            stockView = itemView.findViewById(R.id.cv_stock_item);
         }
     }
 }

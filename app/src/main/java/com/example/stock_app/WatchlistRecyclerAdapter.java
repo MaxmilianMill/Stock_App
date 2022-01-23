@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class WatchlistRecyclerAdapter extends RecyclerView.Adapter<WatchlistRecyclerAdapter.ViewHolder> {
@@ -80,7 +81,7 @@ public class WatchlistRecyclerAdapter extends RecyclerView.Adapter<WatchlistRecy
         }
 
         // set on click listener on the company name view
-        holder.nameView.setOnClickListener(new View.OnClickListener() {
+        holder.stockView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // output a small message on app
@@ -121,6 +122,7 @@ public class WatchlistRecyclerAdapter extends RecyclerView.Adapter<WatchlistRecy
         TextView symbolView;
         TextView changeView;
         ImageView logoView;
+        CardView stockView;
 
         // method to assign views the matching xml elements
         public ViewHolder(@NonNull View itemView) {
@@ -130,6 +132,7 @@ public class WatchlistRecyclerAdapter extends RecyclerView.Adapter<WatchlistRecy
             logoView = itemView.findViewById(R.id.company_logo);
             priceView = itemView.findViewById(R.id.price);
             changeView = itemView.findViewById(R.id.daily_change);
+            stockView = itemView.findViewById(R.id.cv_stock_item);
         }
     }
 }
