@@ -28,17 +28,23 @@ public class LoginActivity extends AppCompatActivity implements PassUserData {
         //create the shown Tabs (Login & Signup)
         tabLayout.addTab(tabLayout.newTab().setText("Login"));
         tabLayout.addTab(tabLayout.newTab().setText("Signup"));
+
+        //TabLayout gravity so weit wie möglich füllen
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+
         //create connection to the viewpager with adapter
+        //übergabe der arguments in adapter
         final LoginAdapter adapter = new LoginAdapter(getSupportFragmentManager(),this, tabLayout.getTabCount());
+        //connect viewpager to the adapter
         viewPager.setAdapter(adapter);
-
+        //connect viewpager to tablayout --> tab changes viewpager
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-
+        //wenn tab ausgewählt, dann
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
 
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
+                //Set the currently selected page - connected to the tab position
                 viewPager.setCurrentItem(tab.getPosition());
                 Log.i("TAG", "onTabSelected: " + tab.getPosition());
             }

@@ -62,6 +62,7 @@ public class GoogleMaps_Activitiy extends FragmentActivity implements OnMapReady
                 Intent intent = new Intent();
                 //open permission settings
                 intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                //Creates an opaque Uri from the given components
                 Uri uri = Uri.fromParts("package", getPackageName(), "");
                 intent.setData(uri);
                 startActivity(intent);

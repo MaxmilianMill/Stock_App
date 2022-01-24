@@ -31,6 +31,7 @@ public class LoginTabFragment extends Fragment {
     
     PassUserData dataPasser;
 
+    //create login tab
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.login_tab_fragment, container, false);
@@ -45,7 +46,7 @@ public class LoginTabFragment extends Fragment {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //ausführen der Funktion - email & password sollen in string gesetzt werde
+                //ausführen der usercheck Funktion - email & password sollen in string gesetzt werde
                 userCheck(email.getText().toString(), password.getText().toString());
 
 
@@ -74,12 +75,11 @@ public class LoginTabFragment extends Fragment {
             boolean UserCheck = false;
             //falls Email oder password leer
             if (email.isEmpty() || password.isEmpty()) {
-                //show text
                 Toast.makeText(getActivity(), "Please fill all Fields!", Toast.LENGTH_SHORT).show();
             } else {
                 for (User u : userList) {
                     System.out.println(u.email);
-                    //wenn die email nicht mit mit der DB-email übereinstimmt
+                    //wenn die email nicht mit der DB-email übereinstimmt
                     if (!u.email.equals(email)) {
                         //show text
                         Toast.makeText(getActivity(), "Email not found!", Toast.LENGTH_SHORT).show();
@@ -109,13 +109,16 @@ public class LoginTabFragment extends Fragment {
             startActivityForResult(new Intent(android.provider.Settings.ACTION_SETTINGS), 0);
         }
     }
-
+    //check internet connection or start
     public boolean isConnectedToInternet() {
+        //start CM to check the state of network connectivity - check connectivity service
         ConnectivityManager connectivity = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
         if (connectivity != null) {
+            //check  the current network connection
             NetworkInfo[] info = connectivity.getAllNetworkInfo();
             if (info != null)
                 for (int i = 0; i < info.length; i++)
+                    //sobald info = connected -->
                     if (info[i].getState() == NetworkInfo.State.CONNECTED) {
                         return true;
                     }
