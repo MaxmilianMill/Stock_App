@@ -46,19 +46,21 @@ public class GoogleMaps_Activitiy extends FragmentActivity implements OnMapReady
     }
 
     private void checkMyPermission() {
-        //Aufrufen der dexter implementation, abrufen der permission, aufrufen des Listeners
+        //call the dexter library that simplifies the process of requesting permissions at runtime
         Dexter.withContext(this).withPermission(Manifest.permission.ACCESS_FINE_LOCATION).withListener(new PermissionListener() {
             @Override
             public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
-                //if Permission granted, make text
+                //if Permission granted, show text
                 Toast.makeText(GoogleMaps_Activitiy.this, "Permission granted", Toast.LENGTH_SHORT).show();
-                //setze boolean = true
                 isPersmissionGranted = true;
             }
 
             @Override
             public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
+            //open permission settings if denied/not accepted
+                //start new intent
                 Intent intent = new Intent();
+                //open permission settings
                 intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
                 Uri uri = Uri.fromParts("package", getPackageName(), "");
                 intent.setData(uri);
