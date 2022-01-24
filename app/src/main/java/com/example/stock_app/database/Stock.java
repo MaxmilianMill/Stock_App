@@ -28,21 +28,6 @@ public class Stock {
     @ColumnInfo(name = "userID")
     public int userID;
 
-    @ColumnInfo(name = "close")
-    public double close;
-
-    @ColumnInfo(name = "open")
-    public double open;
-
-    @ColumnInfo(name = "high")
-    public double high;
-
-    @ColumnInfo(name = "low")
-    public double low;
-
-    @ColumnInfo(name = "daily_change")
-    public double dailyChange;
-
     @ColumnInfo(name = "last_month")
     public double lastMonthData;
 

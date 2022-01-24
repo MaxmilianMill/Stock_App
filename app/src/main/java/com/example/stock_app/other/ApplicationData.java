@@ -26,25 +26,8 @@ public class ApplicationData extends Application {
     public String email;
     public int userID;
 
-    /*
-    public String[] companyNames = {"Amazon", "Microsoft", "Amazon", "Microsoft", "Amazon", "Microsoft",
-                                    "Amazon", "Microsoft", "Amazon", "Microsoft", "Amazon", "Microsoft"};
-    public String[] companySymbols = {"AMZN", "MSFT", "AMZN", "MSFT", "AMZN", "MSFT", "AMZN", "MSFT",
-                                    "AMZN", "MSFT", "AMZN", "MSFT"};
-    public String[] price = new String[companySymbols.length];
-    public String[] dailyChange = new String[companySymbols.length];
-    public int[] companyLogos = {R.drawable.amazon, R.drawable.microsoft, R.drawable.amazon, R.drawable.microsoft,
-                                R.drawable.amazon, R.drawable.microsoft, R.drawable.amazon, R.drawable.microsoft,
-                                R.drawable.amazon, R.drawable.microsoft, R.drawable.amazon, R.drawable.microsoft};
-     */
-    /*
-    Every Array has 3 different methods:
-    1. Getter to retrieve the array from anywhere in the project
-    2. Setter to change the array from anywhere in the project
-    3. Add to add a value into the array
-     */
-
-    // Getter, Setter and Add methods
+    // Getter, Setter and Add methods for all stock data arrays
+    // ---------------------------------------------------------
     public String[] getCompanyNames() {
         return companyNames;
     }

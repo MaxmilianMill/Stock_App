@@ -32,7 +32,7 @@ public class WatchlistRecyclerAdapter extends RecyclerView.Adapter<WatchlistRecy
     Context context;
     Integer[] indexOfStock;
 
-    // methods that receives the arrays from the OverviewActivity class and set the newly declared Arrays to the retrieved ones
+    // methods that receives the arrays from the WatchlistActivity class and set the newly declared Arrays to the retrieved ones
     public WatchlistRecyclerAdapter(Context context, String[] companyNames, int[] companyLogos, String[] price,
                                     String[] companySymbols, String[] dailyChange, String[] open, String[] high,
                                     String[] low, Integer[] indexOfStock) {
@@ -63,6 +63,7 @@ public class WatchlistRecyclerAdapter extends RecyclerView.Adapter<WatchlistRecy
     @Override
     public void onBindViewHolder(@NonNull WatchlistRecyclerAdapter.ViewHolder holder, int position) {
 
+        // get the position only of the stocks in watchlist
         int adjPosition = indexOfStock[position];
 
         System.out.println(adjPosition);
@@ -92,15 +93,12 @@ public class WatchlistRecyclerAdapter extends RecyclerView.Adapter<WatchlistRecy
 
                 // new intent with reference to DetailActivity class
                 Intent intent = new Intent(context, DetailActivity.class);
-                // get the position
+                // send data via intent to detail activity
                 intent.putExtra("position", adjPosition);
-                // give the intent the company logo
                 intent.putExtra("company_logo", companyLogos[adjPosition]);
-                // give the intent the company name
                 intent.putExtra("company_name", companyNames[adjPosition]);
                 intent.putExtra("company_symbol", companySymbols[adjPosition]);
                 intent.putExtra("price", price[adjPosition]);
-                // put all price data in extra
                 intent.putExtra("close", price[adjPosition]);
                 intent.putExtra("open", open[adjPosition]);
                 intent.putExtra("high", high[adjPosition]);

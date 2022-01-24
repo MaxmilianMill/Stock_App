@@ -26,10 +26,8 @@ import java.util.List;
 public class DetailActivity extends AppCompatActivity {
 
     int recyclerPosition;
-
     private String companyName;
     private String companySymbol;
-
     Button addToWatchlist;
 
     @Override
@@ -43,15 +41,18 @@ public class DetailActivity extends AppCompatActivity {
         // access the ApplicationData class where all important values are stored
         ApplicationData appData = ((ApplicationData) getApplicationContext());
 
-        // call intent function
+        // call intent function --> retrieves stock data from recycler view
         getIncomingIntent();
 
+        // create graph with price array for the particular stock
         getGraph(this.recyclerPosition);
 
         addToWatchlist = findViewById(R.id.btn_add_watchlist);
 
+        // call db
         RoomDB db = RoomDB.getDbInstance(this.getApplicationContext());
 
+        // when button is clicked --> create new stock object in db if stock is not already in db
         addToWatchlist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,7 +66,7 @@ public class DetailActivity extends AppCompatActivity {
                     item.addedToWatchlist = true;
 
                     db.stockDao().insertItem(item);
-                    Toast.makeText(DetailActivity.this,companyName + "was added to your Watchlist", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DetailActivity.this,companyName + " was added to your Watchlist", Toast.LENGTH_SHORT).show();
 
                 }
             }
@@ -77,9 +78,8 @@ public class DetailActivity extends AppCompatActivity {
 
         // check if the intent has an assigned logo and name
         if (getIntent().hasExtra("company_logo") && getIntent().hasExtra("price")) {
-            // assign the int the company logo element
+            // assign variables the data from recycler view
             int companyLogo = getIntent().getIntExtra("company_logo", 0);
-            // assign the string the company name
             int position = getIntent().getIntExtra("position", 0);
             String price = getIntent().getStringExtra("price");
             String dailyChange = getIntent().getStringExtra("daily_change");
@@ -88,6 +88,7 @@ public class DetailActivity extends AppCompatActivity {
             String high = getIntent().getStringExtra("high");
             String low = getIntent().getStringExtra("low");
 
+            // get position of stock in the recycler view --> access correct chart data array
             this.recyclerPosition = position;
 
             // data for watchlist table
@@ -121,6 +122,7 @@ public class DetailActivity extends AppCompatActivity {
             changeView.setTextColor(RED);
         }
 
+        // set text view to the required data
         changeView.setText(dailyChange + "%");
 
         TextView closeView = findViewById(R.id.close);
@@ -136,11 +138,13 @@ public class DetailActivity extends AppCompatActivity {
         lowView.setText("$" + low);
     }
 
+    // create a graph with the chart data from application data class
     private void getGraph(int recyclerPosition) {
 
         // access the ApplicationData class where all important values are stored
         ApplicationData appData = ((ApplicationData)getApplicationContext());
 
+        // get the array
         ArrayList data = (ArrayList) appData.chartData.get(recyclerPosition);
 
         GraphView graphView = (GraphView) findViewById(R.id.gv_price_chart);
@@ -152,6 +156,7 @@ public class DetailActivity extends AppCompatActivity {
         graphView.getGridLabelRenderer().setHorizontalLabelsColor(Color.WHITE);
         graphView.getGridLabelRenderer().setVerticalLabelsColor(Color.WHITE);
 
+        // insert data from array into a graph series array
         DataPoint[] dataPoints = new DataPoint[data.size()];
 
         int start = data.size() - 1;
@@ -165,6 +170,7 @@ public class DetailActivity extends AppCompatActivity {
         // change the line color to white
         series.setColor(Color.WHITE);
 
+        // add series to graph
         graphView.addSeries(series);
     }
 

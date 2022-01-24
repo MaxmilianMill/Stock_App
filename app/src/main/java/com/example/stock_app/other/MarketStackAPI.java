@@ -78,6 +78,8 @@ public class MarketStackAPI {
         }
     }
 
+    // getter methods to extract certain data from raw data
+    // -----------------------------------------------------
     public Float getOpen() throws JSONException {
         // get open price from raw data object
         this.open = (float) this.rawData.getDouble("open");

@@ -41,9 +41,11 @@ public class MainActivity extends AppCompatActivity {
         // access the ApplicationData class where all important values are stored
         ApplicationData appData = ((ApplicationData) getApplicationContext());
 
+
+        // check if stock data was already updated in session
         if (!appData.alreadyUpdated) {
 
-            // do this for every symbol
+            // if it was not updated already --> update for every symbol
             for (int i = 0; i < appData.companySymbols.length; i++) {
                 // create new object of api
                 api = new MarketStackAPI();

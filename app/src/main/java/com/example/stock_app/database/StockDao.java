@@ -7,6 +7,7 @@ import androidx.room.Query;
 
 import java.util.List;
 
+// interface to call sql queries from java code
 @Dao
 public interface StockDao {
 

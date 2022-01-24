@@ -36,10 +36,13 @@ public class WatchlistActivity extends AppCompatActivity {
 
         indexOfStock = new Integer[watchlist.size()];
 
+        // for the stocks on watchlist --> check which index they have in application data class
         for (Stock stock: watchlist) {
-            
+
+            // compare watchlist stock with every stock in app data class
             for (int i = 0; i < appData.companySymbols.length; i++) {
-                
+
+                // if its equal --> add index to array and stop iteration
                 if (stock.symbol.equals(appData.companySymbols[i])) {
 
                     indexOfStock[watchlist.indexOf(stock)] = Arrays.asList(appData.companySymbols).indexOf(stock.symbol);
@@ -50,6 +53,7 @@ public class WatchlistActivity extends AppCompatActivity {
             }
         }
 
+        // initialize the recycler view
         recyclerView = findViewById(R.id.rv_watchlist);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
