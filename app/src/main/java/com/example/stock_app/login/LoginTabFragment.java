@@ -55,10 +55,10 @@ public class LoginTabFragment extends Fragment {
         return root;
     }
 
+    // connects interface with function
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        //?
         dataPasser = (PassUserData) context;
     }
 

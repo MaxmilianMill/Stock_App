@@ -9,11 +9,19 @@ import java.util.ArrayList;
 public class ApplicationData extends Application {
 
     // Stock Data Arrays
-    public String[] companyNames = {"Amazon", "Microsoft"};
-    public String[] companySymbols = {"AMZN", "MSFT"};
+    public String[] companyNames = {"Amazon", "Microsoft", "Alphabet", "Disney",
+                                    "Facebook", "JPM Chase", "Mastercard", "NVIDIA",
+                                    "Paypal", "P&G", "Tesla", "Visa", "Apple", "UnitedHealth",
+                                    "Johnson & Johnson"};
+    public String[] companySymbols = {"AMZN", "MSFT", "GOOG", "DIS", "FB", "JPM", "MA", "NVDA",
+                                        "PYPL", "PG", "TSLA", "V", "AAPL", "UNH", "JNJ"};
     public String[] price = new String[companySymbols.length];
     public String[] dailyChange = new String[companySymbols.length];
-    public int[] companyLogos = {R.drawable.amazon, R.drawable.microsoft};
+    public int[] companyLogos = {R.drawable.amazon, R.drawable.microsoft, R.drawable.alphabet,
+                                R.drawable.disney, R.drawable.facebook, R.drawable.jpmorgan_chase,
+                                R.drawable.mastercard, R.drawable.nvidia, R.drawable.paypal,
+                                R.drawable.procter_gamble_logo, R.drawable.tesla, R.drawable.visa,
+                                R.drawable.apple, R.drawable.unitedhealth, R.drawable.johnson_johnson};
     public String[] open = new String[companySymbols.length];
     public String[] high = new String[companySymbols.length];
     public String[] low = new String[companySymbols.length];

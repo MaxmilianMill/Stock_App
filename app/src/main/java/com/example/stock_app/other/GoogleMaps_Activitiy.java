@@ -82,6 +82,7 @@ public class GoogleMaps_Activitiy extends FragmentActivity implements OnMapReady
         map = googleMap;
         map.setMyLocationEnabled(true);
 
+
     //Marker für Microsoft setzen
         //Längen-,Breitengrade initiieren
         LatLng Microsoft = new LatLng(50.92915063920853, 6.963219498306297);
@@ -170,5 +171,4 @@ public class GoogleMaps_Activitiy extends FragmentActivity implements OnMapReady
         //Kamera bei Klick zentrieren
         map.moveCamera(CameraUpdateFactory.newLatLng(WaltDisney));
     }
-
 }
