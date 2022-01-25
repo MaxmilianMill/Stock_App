@@ -106,10 +106,11 @@ public class LoginTabFragment extends Fragment {
             //Log.d(TAG, "Logged in!");
         }
         else {
+            //Start new Settings-intent
             startActivityForResult(new Intent(android.provider.Settings.ACTION_SETTINGS), 0);
         }
     }
-    //check internet connection or start
+    //check internet connection
     public boolean isConnectedToInternet() {
         //start CM to check the state of network connectivity - check connectivity service
         ConnectivityManager connectivity = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);

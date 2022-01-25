@@ -129,18 +129,23 @@ public class MainActivity extends AppCompatActivity {
                     // start
                     startActivity(i);
                 } else {
+                    //start new settings-intent
                     startActivityForResult(new Intent(android.provider.Settings.ACTION_SETTINGS), 0);
                 }
             }
         });
     }
 
+    //check internet connection
     public boolean isConnectedToInternet() {
+        //start CM to check the state of network connectivity - check connectivity service
         ConnectivityManager connectivity = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
         if (connectivity != null) {
+            //check  the current network connection
             NetworkInfo[] info = connectivity.getAllNetworkInfo();
             if (info != null)
                 for (int i = 0; i < info.length; i++)
+                    //sobald info = connected --> go else --> open settings
                     if (info[i].getState() == NetworkInfo.State.CONNECTED) {
                         return true;
                     }
